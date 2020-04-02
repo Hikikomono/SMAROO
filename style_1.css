@@ -1,7 +1,6 @@
 /*Sidebar Start */
 .wrapper {
-    display: flex;
-    align-items: stretch;
+    width: 100%;
 }
 
 #sidebar.active {
@@ -79,3 +78,5 @@ ul ul a {
     position: sticky;
     top: 0;
 }
+
+

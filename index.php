@@ -29,17 +29,19 @@
 
 <body>
 
+
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
     <div class="container">
-        <button type="button" id="sidebarCollapse" class="btn btn-info" onclick="sidebarToggle()">
+        <button type="button" id="sidebarCollapse" class="btn btn-info d-none d-md-block" onclick="sidebarToggle()" on="hideSidebar()" >
             <span>Toggle</span>
         </button>
 
         <a class="navbar-brand" href="#">SmaRoo</a>
-       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> -->
+        </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -48,18 +50,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
-
             </ul>
         </div>
     </div>
 </nav>
 
 <!-- Page Content -->
-
-
-<div class="wrapper">
+<div class="wrapper d-flex align-items-stretch">
     <!-- Sidebar -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="d-none d-md-block">
         <div  class="make-me-sticky">
         <div class="sidebar-header">
             <h3>Bootstrap Sidebar</h3 >
@@ -77,113 +76,30 @@
         </div>
     </nav>
 
-
+    <!-- Page MAIN Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                    elit. Aenean commodo ligula eget dolor. Aenean massa
-                    <strong>strong</strong>. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus
-                    mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem. Nulla consequat massa quis
-                    enim. Donec pede justo, fringilla vel, aliquet nec,
-                    vulputate eget, arcu. In enim justo, rhoncus ut,
-                    imperdiet a, venenatis vitae, justo. Nullam dictum
-                    felis eu pede <a class="external ext" href="#">link</a>
-                    mollis pretium. Integer tincidunt. Cras dapibus.
-                    Vivamus elementum semper nisi. Aenean vulputate
-                    eleifend tellus. Aenean leo ligula, porttitor eu,
-                    consequat vitae, eleifend ac, enim. Aliquam lorem ante,
-                    dapibus in, viverra quis, feugiat a, tellus. Phasellus
-                    viverra nulla ut metus varius laoreet. Quisque rutrum.
-                    Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="border d-flex justify-content-center" >
+                    <h1> test</h1>
+                </div>
             </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="border d-flex justify-content-center">
+                    <h1> test</h1>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="border d-flex justify-content-center">
+                    <h1> test</h1>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="border d-flex justify-content-center">
+                    <h1> test</h1>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -194,8 +110,18 @@
 <script src="vendor/jquery/jquery.slim.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script> /*TODO in separates js file auslagern */
+<script > /*TODO in separates js file auslagern */
     function sidebarToggle() {
+        var element = document.getElementById("sidebar");
+        element.classList.toggle("active");
+    }
+
+</script>
+
+<script class="d-none d-md-block" >
+    class="btn btn-info d-none d-md-block"
+
+    function hideSidebar() {
         var element = document.getElementById("sidebar");
         element.classList.toggle("active");
     }
