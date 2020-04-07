@@ -33,17 +33,20 @@
 <!-- Navigation -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
-    <div class="container">
-        <button type="button" id="sidebarCollapse" class="btn btn-info d-none d-md-block" onclick="sidebarToggle()" on="hideSidebar()" >
-            <span>Toggle</span>
-        </button>
 
         <a class="navbar-brand" href="#">SmaRoo</a>
+        <div class="text-">
+
+        <button type="navbar-toggler" id="sidebarCollapse" class="btn btn-info d-none d-md-block" onclick="sidebarToggle()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto d-md-none">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Edit</a>
                 </li>
@@ -52,51 +55,89 @@
                 </li>
             </ul>
         </div>
-    </div>
+
 </nav>
 
-<!-- Page Content -->
+<!-- Page Content uses flexboxes from bootstrap & the Gridsystem for responsiveness-->
 <div class="wrapper d-flex align-items-stretch">
-    <!-- Sidebar -->
+    <!-- Sidebar as flex item in FlexBox Wrapper-->
     <nav id="sidebar" class="d-none d-md-block">
         <div  class="make-me-sticky">
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3 >
+            <img class="img-fluid rounded-circle" src="img/profile.jfif" alt="profilepic">
+            <h4>Faelb's Smartroom</h4 >
         </div>
 
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
+            <!--<p>Dummy Heading</p>-->
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <a href="#">Dashboard</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="#">Sensor 1</a>
+            </li>
+            <li>
+                <a href="#">Sensor 2</a>
+            </li>
+            <li>
+                <a href="#">Sensor 3</a>
+            </li>
+            <li>
+                <a href="#">Sensor 4</a>
+            </li>
+            <li>
+                <a href="#">Sensor 5</a>
             </li>
         </ul>
         </div>
     </nav>
 
-    <!-- Page MAIN Content -->
+    <!-- Page MAIN Content as flex item in FlexBox Wrapper-->
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="border d-flex justify-content-center" >
-                    <h1> test</h1>
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="border d-flex justify-content-center">
-                    <h1> test</h1>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">01.04 - 01.05</h5>
+                        <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
+                        <a href="#" class="btn btn-primary">export</a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="border d-flex justify-content-center">
-                    <h1> test</h1>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">aktueller Monat</h5>
+                        <h2 class="card-text">Ø: 15°C</h2>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="border d-flex justify-content-center">
-                    <h1> test</h1>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
                 </div>
             </div>
 
@@ -110,6 +151,9 @@
 <script src="vendor/jquery/jquery.slim.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+
+</body>
 <script > /*TODO in separates js file auslagern */
     function sidebarToggle() {
         var element = document.getElementById("sidebar");
@@ -119,14 +163,9 @@
 </script>
 
 <script class="d-none d-md-block" >
-    class="btn btn-info d-none d-md-block"
-
     function hideSidebar() {
         var element = document.getElementById("sidebar");
         element.classList.toggle("active");
     }
 </script>
-
-</body>
-
 </html>
