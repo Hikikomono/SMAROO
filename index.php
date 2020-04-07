@@ -48,10 +48,22 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto d-md-none">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Edit</a>
+                    <a class="nav-link" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Sensor 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sensor 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sensor 3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sensor 4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sensor 5</a>
                 </li>
             </ul>
         </div>
@@ -71,22 +83,22 @@
         <ul class="list-unstyled components">
             <!--<p>Dummy Heading</p>-->
             <li class="active">
-                <a href="#">Dashboard</a>
+                <a href="#">Dashboard</a> <!--Ajax & Jquery hier onclick-->
             </li>
             <li>
-                <a href="#">Sensor 1</a>
+                <a href="#">Sensor 1</a> <!--Ajax & Jquery hier onclick-->
             </li>
             <li>
-                <a href="#">Sensor 2</a>
+                <a href="#">Sensor 2</a> <!--Ajax & Jquery hier onclick-->
             </li>
             <li>
-                <a href="#">Sensor 3</a>
+                <a href="#">Sensor 3</a> <!--Ajax & Jquery hier onclick-->
             </li>
             <li>
-                <a href="#">Sensor 4</a>
+                <a href="#">Sensor 4</a> <!--Ajax & Jquery hier onclick-->
             </li>
             <li>
-                <a href="#">Sensor 5</a>
+                <a href="#">Sensor 5</a> <!--Ajax & Jquery hier onclick-->
             </li>
         </ul>
         </div>
