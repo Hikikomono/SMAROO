@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto d-md-none">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="#">Dashboard</a> <!--TODO somehow link to sidebar items -->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sensor 1</a>
@@ -83,59 +83,43 @@
         <ul class="list-unstyled components">
             <!--<p>Dummy Heading</p>-->
             <li class="active">
-                <a href="#">Dashboard</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Dashboard</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
             <li>
-                <a href="#">Sensor 1</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Sensor 1</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
             <li>
-                <a href="#">Sensor 2</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Sensor 2</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
             <li>
-                <a href="#">Sensor 3</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Sensor 3</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
             <li>
-                <a href="#">Sensor 4</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Sensor 4</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
             <li>
-                <a href="#">Sensor 5</a> <!--Ajax & Jquery hier onclick-->
+                <a href="#">Sensor 5</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
             </li>
         </ul>
         </div>
     </nav>
 
     <!-- Page MAIN Content as flex item in FlexBox Wrapper-->
+    <!--TODO this divs need to change with every click in the sidebar via jquery -->
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card" >
+                <div class="card text-center h-100" >
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                            With supporting text below as a natural lead-in to additional content.
-                        </p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title text-center">Live Daten</h5>
+                        <h2 class="card-text"> 12°C </h2>
+                        <a href="#" class="btn btn-primary">measure</a>
+                        <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">01.04 - 01.05</h5>
-                        <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
-                        <a href="#" class="btn btn-primary">export</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center">
+                <div class="card text-center h-100"> <!--added h-100 for 100% size of all cards - even if not enough text-->
                     <div class="card-body">
                         <h5 class="card-title text-center">aktueller Monat</h5>
                         <h2 class="card-text">Ø: 15°C</h2>
@@ -144,15 +128,41 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center">
+                <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title text-center">aktuelle Woche</h5>
+                        <h2 class="card-text">Ø: 11°C</h2>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
-
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">aktueller Tag</h5>
+                        <h2 class="card-text">Ø: 10°C</h2>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">01.04 - 01.05</h5>
+                        <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
+                        <a href="#" class="btn btn-primary">export</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">01.04 - 01.05</h5>
+                        <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
+                        <a href="#" class="btn btn-primary">export</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -180,4 +190,4 @@
         element.classList.toggle("active");
     }
 </script>
-</html>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
