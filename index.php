@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="style_1.css">
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Our Scripts -->
+    <script src="functions.js"></script>
+
+
 </head>
 
 <body>
@@ -60,7 +64,7 @@
                 <a class="nav-link" href="#">Dashboard</a> <!--TODO somehow link to sidebar items -->
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sensor 1</a>
+                <a id="toggleSensor1" class="nav-link" href="#"">Sensor 1</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sensor 2</a>
@@ -91,11 +95,13 @@
 
             <ul class="list-unstyled components">
                 <!--<p>Dummy Heading</p>-->
-                <li class="active">
-                    <a href="#">Dashboard</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                <li class="active"> <!-- class active needs to be pushed to active sensor-->
+                    <a href="#">Dashboard</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a href="#">Sensor 1</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a id="toggleSensor1" href="#"">Sensor 1</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards temperatur Sensor-->
                 </li>
                 <li>
                     <a href="#">Sensor 2</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
@@ -121,8 +127,8 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center">Live Daten</h5>
-                        <h2 id="aendern" class="card-text"> 12°C </h2>
-                        <a href="#" id="testAJAX" class="btn btn-primary">measure</a>
+                        <h2 id="liveMeasureValue" class="card-text"> 12°C </h2>
+                        <a href="#" id="liveMeasure" class="btn btn-primary">measure</a>
                         <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                     </div>
                 </div>
@@ -132,8 +138,8 @@
                     <!--added h-100 for 100% size of all cards - even if not enough text-->
                     <div class="card-body">
                         <h5 class="card-title text-center">aktueller Monat</h5>
-                        <h2 class="card-text">Ø: 15°C</h2>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h2 id="monthValue" class="card-text">Ø: 15°C</h2>
+                        <a href="#" class="btn btn-primary">nicht gebraucht</a>
                     </div>
                 </div>
             </div>
@@ -141,7 +147,7 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center">aktuelle Woche</h5>
-                        <h2 class="card-text">Ø: 11°C</h2>
+                        <h2 id="weekValue" class="card-text">Ø: 11°C</h2>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
@@ -150,7 +156,7 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center">aktueller Tag</h5>
-                        <h2 class="card-text">Ø: 10°C</h2>
+                        <h2 id="dayValue" class="card-text">Ø: 10°C</h2>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
@@ -178,11 +184,6 @@
 </div>
 
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.slim.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
 </body>
 <script> /*TODO in separates js file auslagern */
     function sidebarToggle() {
@@ -200,15 +201,39 @@
 </script>
 
 <script>
-    $("#testAJAX").click(function () {
-        $.get("getTemp.php?Zeitpunkt=2020-04-06 19:03:25", function(data) {
+
+    $(document).ready(function () {
+        $(document).on("click", "#toggleSensor1", function () { //dieser Syntax ist wegen delegated event handling (wtf?)
+            $('#liveMeasureValue').text("-");
+            //next the Get Requests
+            //alert(getDate());
+            var myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
+            for (var key in myObject) {
+                avoidAnonymCallback(key,myObject);
+/*                var request = "getTemp.php?Zeitpunkt=" + getDate() + "&Key=" + key;
+                //alert(myObject[key]);
+                $.get(request, function (data) {
+                    var obj = JSON.parse(data);
+                    $(myObject[key]).text(obj[0]);
+
+                });*/
+            }
+
+        });
+    });
+</script>
+
+<script>
+    $("#liveMeasure").click(function () { //das ist noch der code für normales get
+        $.get("getTemp.php?Zeitpunkt=2020-02-07 23:00:00", function (data) {
             let obj = JSON.parse(data);
-            $('#aendern').text(obj["temperatur"]);
+            $('#liveMeasureValue').text(obj["temperatur"]);
 
         });
 
     });
 </script>
+
 
 <!--<script>
     $("#testAJAX").click(function(){
