@@ -61,13 +61,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto d-md-none">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard</a> <!--TODO somehow link to sidebar items -->
+                <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a id="toggleSensor1" class="nav-link" href="#"">Sensor 1</a>
+                <a id="toggleSensor1" class="nav-link" href="#"">Temperatur</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sensor 2</a>
+                <a id="toggleSensor2" class="nav-link" href="#">Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sensor 3</a>
@@ -93,18 +93,18 @@
                 <h4>Faelb's Smartroom</h4>
             </div>
 
-            <ul class="list-unstyled components">
+            <ul id="test" class="list-unstyled components">
                 <!--<p>Dummy Heading</p>-->
                 <li class="active"> <!-- class active needs to be pushed to active sensor-->
                     <a href="#">Dashboard</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a id="toggleSensor1" href="#"">Sensor 1</a>
+                    <a id="toggleSensor1" href="#"">Temperatur</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards temperatur Sensor-->
                 </li>
                 <li>
-                    <a href="#">Sensor 2</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a id="toggleSensor2" href="#">Bodenfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
                     <a href="#">Sensor 3</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
@@ -201,31 +201,45 @@
 </script>
 
 <script>
+    var sensortyp = "humidity";
 
     $(document).ready(function () {
-        $(document).on("click", "#toggleSensor1", function () { //dieser Syntax ist wegen delegated event handling (wtf?)
+        $("#test").on("click", "#toggleSensor2", function () { //dieser Syntax ist wegen delegated event handling, ich versuche es mit bubbling
             $('#liveMeasureValue').text("-");
             //next the Get Requests
             //alert(getDate());
             var myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
             for (var key in myObject) {
-                avoidAnonymCallback(key,myObject);
-/*                var request = "getTemp.php?Zeitpunkt=" + getDate() + "&Key=" + key;
-                //alert(myObject[key]);
-                $.get(request, function (data) {
-                    var obj = JSON.parse(data);
-                    $(myObject[key]).text(obj[0]);
+                avoidAnonymCallback(key,myObject,sensortyp);
 
-                });*/
+            }
+
+        });
+    });
+</script>
+<script>
+    var sensortyp = "temperatur";
+    $(document).ready(function () { // function available after document is loaded; it runs once the DOM is ready
+        $("#test").on("click", "#toggleSensor1", function () {
+            $('#liveMeasureValue').text("-");
+            //next the Get Requests
+            //alert(getDate());
+            var myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
+            for (var key in myObject) {
+                avoidAnonymCallback(key,myObject,sensortyp);
+
             }
 
         });
     });
 </script>
 
+
+
+<!-- TODO Script for live data
 <script>
     $("#liveMeasure").click(function () { //das ist noch der code für normales get
-        $.get("getTemp.php?Zeitpunkt=2020-02-07 23:00:00", function (data) {
+        $.get("getData.php?Zeitpunkt=2020-02-07 23:00:00", function (data) {
             let obj = JSON.parse(data);
             $('#liveMeasureValue').text(obj["temperatur"]);
 
@@ -233,6 +247,7 @@
 
     });
 </script>
+-->
 
 
 <!--<script>
