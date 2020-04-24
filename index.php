@@ -201,15 +201,16 @@
 </script>
 
 <script>
-    var sensortyp = "humidity";
+
 
     $(document).ready(function () {
-        $("#test").on("click", "#toggleSensor2", function () { //dieser Syntax ist wegen delegated event handling, ich versuche es mit bubbling
+        $("#test").on("click", "#toggleSensor2", function () {
             $('#liveMeasureValue').text("-");
             //next the Get Requests
             //alert(getDate());
-            var myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
-            for (var key in myObject) {
+            let myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
+            for (let key in myObject) {
+                let sensortyp = "humidity";
                 avoidAnonymCallback(key,myObject,sensortyp);
 
             }
@@ -217,15 +218,17 @@
         });
     });
 </script>
+
 <script>
-    var sensortyp = "temperatur";
+
     $(document).ready(function () { // function available after document is loaded; it runs once the DOM is ready
         $("#test").on("click", "#toggleSensor1", function () {
             $('#liveMeasureValue').text("-");
             //next the Get Requests
             //alert(getDate());
-            var myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
-            for (var key in myObject) {
+            let myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
+            for (let key in myObject) {
+                let sensortyp = "temperatur";
                 avoidAnonymCallback(key,myObject,sensortyp);
 
             }

@@ -18,6 +18,7 @@ function avoidAnonymCallback(key,value,sensortyp){
     var request = "getData.php?Zeitpunkt=" + getDate() + "&Key=" + key +"&Sensortyp=" +sensortyp;
     $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function
     var obj = JSON.parse(data);
+    alert(sensortyp);
     $(value[key]).text(obj[0]);
 
 /*    if (typeof obj[0] == 'undefined') {
