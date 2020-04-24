@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="style_1.css">
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- Our Scripts -->
     <script src="functions.js"></script>
 
@@ -48,26 +49,30 @@
     <a class="navbar-brand" href="#">SmaRoo</a>
     <div class="text-">
 
+        <!--button for sidebar on big screens-->
         <button type="navbar-toggler" id="sidebarCollapse" class="btn btn-info d-none d-md-block"
                 onclick="sidebarToggle()">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 
+    <!--button for navbar on smaller screens-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!--navbar for smaller screens-->
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto d-md-none">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a id="toggleSensor1" class="nav-link" href="#"">Temperatur</a>
+                <a class="nav-link" href="#" onclick="getBoard('temperatur')">Temperatur</a>
             </li>
             <li class="nav-item">
-                <a id="toggleSensor2" class="nav-link" href="#">Bodenfeuchtigkeit</a>
+                <a class="nav-link" href="#" onclick="getBoard('humidity')">Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sensor 3</a>
@@ -85,7 +90,7 @@
 
 <!-- Page Content uses flexboxes from bootstrap & the Gridsystem for responsiveness-->
 <div class="wrapper d-flex align-items-stretch">
-    <!-- Sidebar as flex item in FlexBox Wrapper-->
+    <!-- Sidebar as flex item in FlexBox Wrapper; only visible for > medium-->
     <nav id="sidebar" class="d-none d-md-block">
         <div class="make-me-sticky">
             <div class="sidebar-header">
@@ -100,11 +105,12 @@
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a id="toggleSensor1" href="#"">Temperatur</a>
+                    <a href="#" onclick="getBoard('temperatur')">Temperatur</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards temperatur Sensor-->
                 </li>
                 <li>
-                    <a id="toggleSensor2" href="#">Bodenfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#" onclick="getBoard('humidity')">Bodenfeuchtigkeit</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
                     <a href="#">Sensor 3</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
@@ -185,84 +191,6 @@
 
 
 </body>
-<script> /*TODO in separates js file auslagern */
-    function sidebarToggle() {
-        var element = document.getElementById("sidebar");
-        element.classList.toggle("active");
-    }
-
-</script>
-
-<script class="d-none d-md-block">
-    function hideSidebar() {
-        var element = document.getElementById("sidebar");
-        element.classList.toggle("active");
-    }
-</script>
-
-<script>
-
-
-    $(document).ready(function () {
-        $("#test").on("click", "#toggleSensor2", function () {
-            $('#liveMeasureValue').text("-");
-            //next the Get Requests
-            //alert(getDate());
-            let myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
-            for (let key in myObject) {
-                let sensortyp = "humidity";
-                avoidAnonymCallback(key,myObject,sensortyp);
-
-            }
-
-        });
-    });
-</script>
-
-<script>
-
-    $(document).ready(function () { // function available after document is loaded; it runs once the DOM is ready
-        $("#test").on("click", "#toggleSensor1", function () {
-            $('#liveMeasureValue').text("-");
-            //next the Get Requests
-            //alert(getDate());
-            let myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
-            for (let key in myObject) {
-                let sensortyp = "temperatur";
-                avoidAnonymCallback(key,myObject,sensortyp);
-
-            }
-
-        });
-    });
-</script>
-
-
-
-<!-- TODO Script for live data
-<script>
-    $("#liveMeasure").click(function () { //das ist noch der code für normales get
-        $.get("getData.php?Zeitpunkt=2020-02-07 23:00:00", function (data) {
-            let obj = JSON.parse(data);
-            $('#liveMeasureValue').text(obj["temperatur"]);
-
-        });
-
-    });
-</script>
--->
-
-
-<!--<script>
-    $("#testAJAX").click(function(){
-        $("#aendern").load("getTemp.php?Zeitpunkt=2020-04-06 19:03:25\n", function(responseTxt, statusTxt, xhr){
-            if(statusTxt == "success")
-                alert("External content loaded successfully!response:" +xhr);
-            if(statusTxt == "error")
-                alert("Error: " + xhr.status + ": " + xhr.statusText);
-        });
-    });
-</script>-->
 
 
 </html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

@@ -14,11 +14,13 @@ function getDate() {
     return [year, month, day].join('-');
 }
 
+//the get anonym function is called by a function to avoid a reference call of the for loop it is used in
+//TODO get a "exception handling" for the case of no data for that timestamp
 function avoidAnonymCallback(key,value,sensortyp){
     var request = "getData.php?Zeitpunkt=" + getDate() + "&Key=" + key +"&Sensortyp=" +sensortyp;
-    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function
+    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
     var obj = JSON.parse(data);
-    alert(sensortyp);
+    //alert(sensortyp);
     $(value[key]).text(obj[0]);
 
 /*    if (typeof obj[0] == 'undefined') {
@@ -29,3 +31,19 @@ function avoidAnonymCallback(key,value,sensortyp){
     }*/
      });
 }
+
+//toggles the sidebars margin in the active class and therefore if its shown or not
+function sidebarToggle() {
+    var element = document.getElementById("sidebar");
+    element.classList.toggle("active");
+}
+
+function getBoard(sensortyp){
+            $('#liveMeasureValue').text("-");
+            //next the Get Requests
+            let myObject = {MONTH: '#monthValue', WEEK: '#weekValue', DAY: '#dayValue'};
+            for (let key in myObject) {
+                avoidAnonymCallback(key,myObject,sensortyp);
+            }
+}
+
