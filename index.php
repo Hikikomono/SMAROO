@@ -49,7 +49,7 @@
     <a class="navbar-brand" href="#">SmaRoo</a>
     <div class="text-">
 
-        <!--button for sidebar on big screens-->
+        <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
         <button type="navbar-toggler" id="sidebarCollapse" class="btn btn-info d-none d-md-block"
                 onclick="sidebarToggle()">
             <span class="navbar-toggler-icon"></span>
@@ -106,11 +106,9 @@
                 </li>
                 <li>
                     <a href="#" onclick="getBoard('temperatur')">Temperatur</a>
-                    <!--TODO Ajax & Jquery hier onclick changes data in cards temperatur Sensor-->
                 </li>
                 <li>
                     <a href="#" onclick="getBoard('humidity')">Bodenfeuchtigkeit</a>
-                    <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
                     <a href="#">Sensor 3</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
