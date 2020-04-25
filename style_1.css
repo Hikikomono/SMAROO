@@ -10,6 +10,7 @@
 
 /*
     ADDITIONAL DEMO STYLE, NOT IMPORTANT TO MAKE THINGS WORK BUT TO MAKE IT A BIT NICER :)
+    where is that from and what is it for?
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
@@ -28,7 +29,8 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-.icon {
+
+.icon { /*not working yet*/
     width: 25px;
     filter: invert(1);
 }
@@ -84,4 +86,9 @@ ul ul a {
     top: 0;
 }
 
+.card-title {
+    color: #3e4676;
+    font-size: .9375rem;
+    line-height: 1.5;
+}
 

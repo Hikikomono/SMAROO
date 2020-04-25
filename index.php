@@ -50,14 +50,14 @@
     <div class="text-">
 
         <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
-        <button type="navbar-toggler" id="sidebarCollapse" class="btn btn-info d-none d-md-block"
+        <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
                 onclick="sidebarToggle()">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 
     <!--button for navbar on smaller screens-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+    <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -131,9 +131,9 @@
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Live Daten</h5>
+                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
                         <h2 id="liveMeasureValue" class="card-text"> 12°C </h2>
-                        <a href="#" id="liveMeasure" class="btn btn-primary">measure</a>
+                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">measure</button>
                         <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                     </div>
                 </div>
@@ -142,45 +142,48 @@
                 <div class="card text-center h-100">
                     <!--added h-100 for 100% size of all cards - even if not enough text-->
                     <div class="card-body">
-                        <h5 class="card-title text-center">aktueller Monat</h5>
+                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
                         <h2 id="monthValue" class="card-text">Ø: 15°C</h2>
-                        <a href="#" class="btn btn-primary">nicht gebraucht</a>
+                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
+                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title text-center">aktuelle Woche</h5>
+                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
                         <h2 id="weekValue" class="card-text">Ø: 11°C</h2>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
+                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title text-center">aktueller Tag</h5>
+                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
                         <h2 id="dayValue" class="card-text">Ø: 10°C</h2>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
+                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title">01.04 - 01.05</h5>
+                        <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
                         <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
-                        <a href="#" class="btn btn-primary">export</a>
+                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">apply</button>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                 <div class="card text-center h-100">
                     <div class="card-body">
-                        <h5 class="card-title">01.04 - 01.05</h5>
+                        <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
                         <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
-                        <a href="#" class="btn btn-primary">export</a>
+                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
                     </div>
                 </div>
             </div>
