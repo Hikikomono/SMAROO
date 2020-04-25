@@ -21,7 +21,10 @@ function avoidAnonymCallback(key, value, sensortyp) {
         var obj = JSON.parse(data);
         //"exception handling" if no data is in the db
         if (obj[0] != null) {
-            $(value[key]).text(obj[0]);
+            var parsedNum = parseFloat(obj[0]).toFixed(2);
+
+
+            $(value[key]).text(parsedNum);
         } else {
             $(value[key]).text("-no data-");
         }
