@@ -107,7 +107,7 @@
 
             <ul id="test" class="list-unstyled components">
                 <!--<p>Dummy Heading</p>-->
-                <li class="active"> <!-- class active needs to be pushed to active sensor-->
+                <li>
                     <a href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"
                                      style="width:25px; filter: invert(1);"> Dashboard</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
@@ -158,11 +158,21 @@
                     <!--added h-100 for 100% size of all cards - even if not enough text-->
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
-                        <h2 style="display: inline">Ø:</h2>
-                        <h2 style="display: inline" id="monthValue" class="card-text">15°C</h2>
+                        <h2 style="display: inline">Ø: </h2>
+                        <h2 style="display: inline" id="monthValue" class="card-text">value</h2>
+                        <h2 style="display: inline" class="card-text unit">units</h2>
                         <hr/>
-                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
-                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
+                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                        <div>
+                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
+                        <div>
+                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="monthValueMin">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,11 +180,21 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
-                        <h2 style="display: inline">Ø:</h2>
-                        <h2 style="display: inline" id="weekValue" class="card-text">11°C</h2>
+                        <h2 style="display: inline">Ø: </h2>
+                        <h2 style="display: inline" id="weekValue" class="card-text">value</h2>
+                        <h2 style="display: inline" class="card-text unit">units</h2>
                         <hr/>
-                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
-                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
+                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                        <div>
+                        <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                        <h5 style="display: inline" class="text-muted card-text" id="weekValueMax">value</h5>
+                        <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
+                        <div>
+                        <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                        <h5 style="display: inline" class="text-muted card-text" id="weekValueMin">value</h5>
+                        <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,11 +202,21 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
-                        <h2 style="display: inline">Ø:</h2>
-                        <h2 style="display: inline" id="dayValue" class="card-text">10°C</h2>
+                        <h2 style="display: inline">Ø: </h2>
+                        <h2 style="display: inline" id="dayValue" class="card-text">value</h2>
+                        <h2 style="display: inline" class="card-text unit">units</h2>
                         <hr/>
-                        <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
-                        <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
+                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                        <div>
+                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="dayValueMax">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
+                        <div>
+                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="dayValueMin">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                        </div>
                     </div>
                 </div>
             </div>
