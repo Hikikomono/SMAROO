@@ -66,19 +66,26 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto d-md-none">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"/ style="width:25px; filter: invert(1);"> Dashboard</a>
+                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"/
+                    style="width:25px; filter: invert(1);"> Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="getBoard('temperatur')" ><img src="https://img.icons8.com/ios/50/000000/thermometer.png"/ style="width:25px; filter: invert(1);">  Temperatur</a>
+                <a class="nav-link" href="#" onclick="getBoard('temperatur')"><img
+                            src="https://img.icons8.com/ios/50/000000/thermometer.png"/ style="width:25px; filter:
+                    invert(1);"> Temperatur</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="getBoard('humidity')"><img src="https://img.icons8.com/ios/50/000000/hygrometer.png"/ style="width:25px; filter: invert(1);">  Bodenfeuchtigkeit</a>
+                <a class="nav-link" href="#" onclick="getBoard('humidity')"><img
+                            src="https://img.icons8.com/ios/50/000000/hygrometer.png"/ style="width:25px; filter:
+                    invert(1);"> Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"/ style="width:25px; filter: invert(1);">  Luftfeuchtigkeit</a>
+                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"/ style="width:25px;
+                    filter: invert(1);"> Luftfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"/ style="width:25px; filter: invert(1);">  Lichtsensor</a>
+                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"/
+                    style="width:25px; filter: invert(1);"> Lichtsensor</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sensor 5</a>
@@ -101,21 +108,28 @@
             <ul id="test" class="list-unstyled components">
                 <!--<p>Dummy Heading</p>-->
                 <li class="active"> <!-- class active needs to be pushed to active sensor-->
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"/ style="width:25px; filter: invert(1);">  Dashboard</a>
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"/ style="width:25px;
+                        filter: invert(1);"> Dashboard</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a href="#" onclick="getBoard('temperatur')"><img src="https://img.icons8.com/ios/50/000000/thermometer.png"/ style="width:25px; filter: invert(1);">  Temperatur</a><!--TODO die abstände durch css austauschen-->
+                    <a href="#" onclick="getBoard('temperatur')"><img
+                                src="https://img.icons8.com/ios/50/000000/thermometer.png"/ style="width:25px; filter:
+                        invert(1);"> Temperatur</a><!--TODO die abstände durch css austauschen-->
                 </li>
                 <li>
-                    <a href="#" onclick="getBoard('humidity')"><img src="https://img.icons8.com/ios/50/000000/hygrometer.png"/ style="width:25px; filter: invert(1);">  Bodenfeuchtigkeit</a>
+                    <a href="#" onclick="getBoard('humidity')"><img
+                                src="https://img.icons8.com/ios/50/000000/hygrometer.png"/ style="width:25px; filter:
+                        invert(1);"> Bodenfeuchtigkeit</a>
                 </li>
                 <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"/ style="width:25px; filter: invert(1);">  Luftfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"/ style="width:25px; filter:
+                        invert(1);"> Luftfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"/ style="width:25px; filter: invert(1);">  Lichtsensor</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"/ style="width:25px; filter:
+                        invert(1);"> Lichtsensor</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
                     <a href="#">Sensor 5</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
@@ -132,7 +146,8 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
-                        <h2 id="liveMeasureValue" class="card-text"> 12°C </h2>
+                        <h2 id="liveMeasureValue" class="card-text">12°C</h2>
+                        <hr/>
                         <button id="liveMeasure" type="button" class="btn btn-outline-dark">measure</button>
                         <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                     </div>
@@ -143,7 +158,9 @@
                     <!--added h-100 for 100% size of all cards - even if not enough text-->
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
-                        <h2 id="monthValue" class="card-text">Ø: 15°C</h2>
+                        <h2 style="display: inline">Ø:</h2>
+                        <h2 style="display: inline" id="monthValue" class="card-text">15°C</h2>
+                        <hr/>
                         <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
                         <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
@@ -153,7 +170,9 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
-                        <h2 id="weekValue" class="card-text">Ø: 11°C</h2>
+                        <h2 style="display: inline">Ø:</h2>
+                        <h2 style="display: inline" id="weekValue" class="card-text">11°C</h2>
+                        <hr/>
                         <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
                         <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
@@ -163,7 +182,9 @@
                 <div class="card text-center h-100">
                     <div class="card-body">
                         <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
-                        <h2 id="dayValue" class="card-text">Ø: 10°C</h2>
+                        <h2 style="display: inline">Ø:</h2>
+                        <h2 style="display: inline" id="dayValue" class="card-text">10°C</h2>
+                        <hr/>
                         <h5 class="text-muted card-text" id="monthValueMax">highest: 16°C</h5>
                         <h5 class="text-muted card-text" id="monthValueMin">lowest: 10°C</h5>
                     </div>
