@@ -67,25 +67,23 @@
         <ul class="navbar-nav ml-auto d-md-none">
             <li class="nav-item active">
                 <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"
-                                                  style="width:25px; filter: invert(1);"> Dashboard</a>
+                                                  > Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="getBoard('temperatur')"><img
-                            src="https://img.icons8.com/ios/50/000000/thermometer.png" style="width:25px; filter:
-                    invert(1);"> Temperatur</a>
+                            src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="getBoard('humidity')"><img
-                            src="https://img.icons8.com/ios/50/000000/hygrometer.png" style="width:25px; filter:
-                    invert(1);"> Bodenfeuchtigkeit</a>
+                            src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png" style="width:25px;
-                    filter: invert(1);"> Luftfeuchtigkeit</a>
+                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png">
+                    Luftfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"
-                                                  style="width:25px; filter: invert(1);"> Lichtsensor</a>
+                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png">
+                    Lichtsensor</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sensor 5</a>
@@ -109,27 +107,24 @@
                 <!--<p>Dummy Heading</p>-->
                 <li>
                     <a href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"
-                                     style="width:25px; filter: invert(1);"> Dashboard</a>
+                                     > Dashboard</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
                     <a href="#" onclick="getBoard('temperatur')"><img
-                                src="https://img.icons8.com/ios/50/000000/thermometer.png" style="width:25px; filter:
-                        invert(1);"> Temperatur</a><!--TODO die abstände durch css austauschen-->
+                                src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
+                    <!--TODO die abstände durch css austauschen-->
                 </li>
                 <li>
                     <a href="#" onclick="getBoard('humidity')"><img
-                                src="https://img.icons8.com/ios/50/000000/hygrometer.png" style="width:25px; filter:
-                        invert(1);"> Bodenfeuchtigkeit</a>
+                                src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
                 </li>
                 <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png" style="width:25px; filter:
-                        invert(1);"> Luftfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png" style="width:25px; filter:
-                        invert(1);"> Lichtsensor</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
                     <a href="#">Sensor 5</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
@@ -186,14 +181,14 @@
                         <hr/>
                         <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
                         <div>
-                        <h5 style="display: inline" class="text-muted card-text">highest: </h5>
-                        <h5 style="display: inline" class="text-muted card-text" id="weekValueMax">value</h5>
-                        <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="weekValueMax">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
                         </div>
                         <div>
-                        <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
-                        <h5 style="display: inline" class="text-muted card-text" id="weekValueMin">value</h5>
-                        <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                            <h5 style="display: inline" class="text-muted card-text" id="weekValueMin">value</h5>
+                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
                         </div>
                     </div>
                 </div>
