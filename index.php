@@ -39,7 +39,7 @@
 
 </head>
 
-<body>
+<body onload="taggingCardBoards()">
 
 
 <!-- Navigation -->
@@ -67,14 +67,14 @@
         <ul class="navbar-nav ml-auto d-md-none">
             <li class="nav-item active">
                 <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"
-                                                  > Dashboard</a>
+                    > Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="getBoard('temperatur')"><img
+                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('temperatur')"><img
                             src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="getBoard('humidity')"><img
+                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('humidity')"><img
                             src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
@@ -86,7 +86,8 @@
                     Lichtsensor</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sensor 5</a>
+                <a class="nav-link" href="#" onclick="toggleSensorMenu()"><img
+                            src="https://img.icons8.com/ios/48/000000/electrical-sensor.png"/> Sensorcontrol</a>
             </li>
         </ul>
     </div>
@@ -107,129 +108,267 @@
                 <!--<p>Dummy Heading</p>-->
                 <li>
                     <a href="#"><img src="https://img.icons8.com/ios/50/000000/phonelink-setup.png"
-                                     > Dashboard</a>
+                        > Dashboard</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a href="#" onclick="getBoard('temperatur')"><img
+                    <a href="#" onclick="toggleSensorBoard();getBoard('temperatur')"><img
                                 src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
                     <!--TODO die abstände durch css austauschen-->
                 </li>
                 <li>
-                    <a href="#" onclick="getBoard('humidity')"><img
+                    <a href="#" onclick="toggleSensorBoard();getBoard('humidity')"><img
                                 src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
                 </li>
                 <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
-                    <a href="#">Sensor 5</a> <!--TODO Ajax & Jquery hier onclick changes data in cards-->
+                    <a href="#" onclick="toggleSensorMenu()"><img
+                                src="https://img.icons8.com/ios/48/000000/electrical-sensor.png"/> Sensorcontrol</a>
+                    <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
             </ul>
         </div>
     </nav>
 
+
+
+
+
     <!-- Page MAIN Content as flex item in FlexBox Wrapper-->
-    <!--TODO this divs need to change with every click in the sidebar via jquery -->
+
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
-                        <h2 id="liveMeasureValue" class="card-text">12°C</h2>
-                        <hr/>
-                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">measure</button>
-                        <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <!--added h-100 for 100% size of all cards - even if not enough text-->
-                    <div class="card-body">
-                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
-                        <h2 style="display: inline">Ø: </h2>
-                        <h2 style="display: inline" id="monthValue" class="card-text">value</h2>
-                        <h2 style="display: inline" class="card-text unit">units</h2>
-                        <hr/>
-                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
-                        </div>
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="monthValueMin">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
-                        <h2 style="display: inline">Ø: </h2>
-                        <h2 style="display: inline" id="weekValue" class="card-text">value</h2>
-                        <h2 style="display: inline" class="card-text unit">units</h2>
-                        <hr/>
-                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="weekValueMax">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
-                        </div>
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="weekValueMin">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+
+        <div id="statusCards"><!--for Status Cardboard-->
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h2 class="card-title p-3 mb-2 bg-light text-dark rounded">Sensorstatus</h2>
+                            <div style="display: flex; justify-content: space-between">
+                                <!--using flexbox here to get the toggle button aligned to the other side-->
+                                <h5 class="card-text">Temperatur</h5>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="toggleTemp" onclick="postSensorState('temperatur')">
+                                    <label class="custom-control-label" for="toggleTemp"></label>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between">
+                                <!--using flexbox here to get the toggle button aligned to the other side-->
+                                <h5 class="card-text">Bodenfeuchtigkeit</h5>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="toggleBoden" onclick="postSensorState('humidity')">
+                                    <label class="custom-control-label" for="toggleBoden"></label>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between">
+                                <!--using flexbox here to get the toggle button aligned to the other side-->
+                                <h5 class="card-text">Luftfeuchtigkeit</h5>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="toggleLuft" onclick="postSensorState('air')">
+                                    <label class="custom-control-label" for="toggleLuft"></label>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between">
+                                <!--using flexbox here to get the toggle button aligned to the other side-->
+                                <h5 class="card-text">Lichtsensor</h5>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="toggleLicht" onclick="postSensorState('light')">
+                                    <label class="custom-control-label" for="toggleLicht"></label>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <p>Schalter schieben um die Sensoren zu aktivieren/deaktivieren</p> <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
-                        <h2 style="display: inline">Ø: </h2>
-                        <h2 style="display: inline" id="dayValue" class="card-text">value</h2>
-                        <h2 style="display: inline" class="card-text unit">units</h2>
-                        <hr/>
-                        <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">highest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="dayValueMax">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+
+
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <!--added h-100 for 100% size of all cards - even if not enough text-->
+                        <div class="card-body">
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Temperatur</h2>
+                            <h2 style="display: inline">Informationstext zu Temperatursensor </h2>
+                            <hr/>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                            </div>
                         </div>
-                        <div>
-                            <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
-                            <h5 style="display: inline" class="text-muted card-text" id="dayValueMin">value</h5>
-                            <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <!--added h-100 for 100% size of all cards - even if not enough text-->
+                        <div class="card-body">
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Bodenfeuchtigkeit</h2>
+                            <h2 style="display: inline">Informationstext zu Bodenfeuchtigkeit </h2>
+                            <hr/>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <!--added h-100 for 100% size of all cards - even if not enough text-->
+                        <div class="card-body">
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Luftfeuchtigkeit</h2>
+                            <h2 style="display: inline">Informationstext zu Luftfeuchtigkeit </h2>
+                            <hr/>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <!--added h-100 for 100% size of all cards - even if not enough text-->
+                        <div class="card-body">
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Lichtsensor</h2>
+                            <h2 style="display: inline">Informationstext zu Lichtsensor </h2>
+                            <hr/>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Statistik zu Laufzeit</h5>
+                            <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
-                        <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
-                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">apply</button>
+        </div>
+
+
+
+
+<!--
+Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
+-->
+
+
+
+        <div id="sensorCards"><!--for Sensors/Dashboard Cardboard-->
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
+                            <h2 id="liveMeasureValue" class="card-text">12°C</h2>
+                            <hr/>
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">measure</button>
+                            <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
-                <div class="card text-center h-100">
-                    <div class="card-body">
-                        <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
-                        <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
-                        <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <!--added h-100 for 100% size of all cards - even if not enough text-->
+                        <div class="card-body">
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
+                            <h2 style="display: inline">Ø: </h2>
+                            <h2 style="display: inline" id="monthValue" class="card-text">value</h2>
+                            <h2 style="display: inline" class="card-text unit">units</h2>
+                            <hr/>
+                            <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMin">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
+                            <h2 style="display: inline">Ø: </h2>
+                            <h2 style="display: inline" id="weekValue" class="card-text">value</h2>
+                            <h2 style="display: inline" class="card-text unit">units</h2>
+                            <hr/>
+                            <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="weekValueMax">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="weekValueMin">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
+                            <h2 style="display: inline">Ø: </h2>
+                            <h2 style="display: inline" id="dayValue" class="card-text">value</h2>
+                            <h2 style="display: inline" class="card-text unit">units</h2>
+                            <hr/>
+                            <!-- gibts da ne sauberere Lösung? ohne je 3 elemente-->
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">highest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="dayValueMax">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                            <div>
+                                <h5 style="display: inline" class="text-muted card-text">lowest: </h5>
+                                <h5 style="display: inline" class="text-muted card-text" id="dayValueMin">value</h5>
+                                <h5 style="display: inline" class="text-muted card-text unit">units</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
+                            <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
+                            <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -14,10 +14,9 @@ function getDate() {
 }
 
 //the get anonym function is called by a function to avoid a reference call of the for loop it is used in
-
 function avoidAnonymCallback(key, value, sensortyp) {
     //change unit based on measuretype
-    switch(sensortyp) {
+    switch (sensortyp) {
         case "temperatur":
             $(".unit").text("°C");
             break;
@@ -36,12 +35,12 @@ function avoidAnonymCallback(key, value, sensortyp) {
             var parsedNum = parseFloat(obj[0]).toFixed(2);
             $(value[key]).text(parsedNum);
             //Min und Max Werte zuordnen
-            $(value[key]+"Max").text(parseFloat(obj[1]).toFixed(2));
-            $(value[key]+"Min").text(parseFloat(obj[2]).toFixed(2));
+            $(value[key] + "Max").text(parseFloat(obj[1]).toFixed(2));
+            $(value[key] + "Min").text(parseFloat(obj[2]).toFixed(2));
         } else {
             $(value[key]).text("-");
-            $(value[key]+"Max").text("-");
-            $(value[key]+"Min").text("-");
+            $(value[key] + "Max").text("-");
+            $(value[key] + "Min").text("-");
         }
 
 
@@ -61,5 +60,55 @@ function getBoard(sensortyp) {
     for (let key in myObject) {
         avoidAnonymCallback(key, myObject, sensortyp);
     }
+}
+
+
+//next three functions work together
+function taggingCardBoards(){ //used to give initial style display values so toggling the Cards will work
+    document.getElementById("sensorCards").style.display = "block";
+    document.getElementById("statusCards").style.display = "none";
+
+}
+
+function toggleSensorMenu() {
+
+    let statusCards = document.getElementById("statusCards");
+    let sensorCards = document.getElementById("sensorCards");
+    if (statusCards.style.display === "none") {
+        sensorCards.style.display = "none";
+        statusCards.style.display = "block";
+        //TODO do the GET request for the status at DB or Raspi
+/*        $("#toggleTemp").prop("checked", true);
+        $("#toggleBoden").prop("checked", true);
+        $("#toggleLuft").prop("checked", false);
+        $("#toggleLicht").prop("checked", true);*/
+
+    }
+
+
+}
+
+function toggleSensorBoard() {
+
+    let statusCards = document.getElementById("statusCards");
+    let sensorCards = document.getElementById("sensorCards");
+
+    if (sensorCards.style.display === "none") {
+        sensorCards.style.display = "block";
+        statusCards.style.display = "none";
+    }
+
+}
+
+
+//function for POSTing new sensor status if toggled on/off
+
+function postSensorState(sensortype) {
+
+    /*TODO POST der schön über die checkbox die geklickt wurde den sensortyp bekommt und dann das korrekte Post macht
+       direkt an Raspi der dann die Datenbank mit seinem neuen State aktualisiert
+         */
+
+
 }
 
