@@ -17,7 +17,7 @@ function getDate() {
 function avoidAnonymCallback(key, value, sensortyp) {
     //change unit based on measuretype
     switch (sensortyp) {
-        case "temperatur":
+        case "temperature":
             $(".unit").text("°C");
             break;
         case "humidity":

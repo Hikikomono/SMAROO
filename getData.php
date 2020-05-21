@@ -9,9 +9,9 @@ $sensortyp = $_GET['Sensortyp']; // checkt welcher table
 
 //TODO 
 //get user id via e-mail (@live via $_GET)
-$get_temp_sql = "SELECT AVG(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(Zeitpunkt) UNION ALL
- SELECT MAX(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(Zeitpunkt) UNION ALL
- SELECT MIN(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(Zeitpunkt)";
+$get_temp_sql = "SELECT AVG(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date) UNION ALL
+ SELECT MAX(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date) UNION ALL
+ SELECT MIN(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date)";
 //$temp = $pdo->query($get_temp_sql)->fetch();
 
 

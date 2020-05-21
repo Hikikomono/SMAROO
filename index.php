@@ -70,7 +70,7 @@
                     > Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('temperatur')"><img
+                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('temperature')"><img
                             src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
             </li>
             <li class="nav-item">
@@ -112,7 +112,7 @@
                     <!--TODO Ajax & Jquery hier onclick changes data in cards to Dashboard settings of User-->
                 </li>
                 <li>
-                    <a href="#" onclick="toggleSensorBoard();getBoard('temperatur')"><img
+                    <a href="#" onclick="toggleSensorBoard();getBoard('temperature')"><img
                                 src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
                     <!--TODO die abstände durch css austauschen-->
                 </li>
@@ -156,7 +156,7 @@
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
                                 <h5 class="card-text">Temperatur</h5>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="toggleTemp" onclick="postSensorState('temperatur')">
+                                    <input type="checkbox" class="custom-control-input" id="toggleTemp" onclick="postSensorState('temperature')">
                                     <label class="custom-control-label" for="toggleTemp"></label>
                                 </div>
                             </div>
