@@ -9,7 +9,7 @@ $get_temp_sql = "SELECT state FROM states WHERE sensor = '" . $timestamp . "'";
 
 
 foreach ($pdo->query($get_temp_sql) as $row) {
-$dataRequest[] = $row['state'];}
+$dataRequest = $row['state'];}
 
 echo json_encode($dataRequest);
 ?>
