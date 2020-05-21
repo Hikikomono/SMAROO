@@ -70,7 +70,7 @@ function getBoard(sensortyp) {
 
 
 //next three functions work together
-function taggingCardBoards(){ //used to give initial style display values so toggling the Cards will work
+function taggingCardBoards() { //used to give initial style display values so toggling the Cards will work
     document.getElementById("sensorCards").style.display = "block";
     document.getElementById("statusCards").style.display = "none";
 
@@ -83,13 +83,33 @@ function toggleSensorMenu() {
     if (statusCards.style.display === "none") {
         sensorCards.style.display = "none";
         statusCards.style.display = "block";
-        //TODO do the GET request for the status at DB or Raspi
-/*        $("#toggleTemp").prop("checked", true);
-        $("#toggleBoden").prop("checked", true);
-        $("#toggleLuft").prop("checked", false);
-        $("#toggleLicht").prop("checked", true);*/
-
     }
+//hier werden die aktuellen States aus der Datenbank abgefragt und je nachdem die toggler geshifted
+    var request = "getStates.php";
+    $.get(request, function (data) {
+        var states = JSON.parse(data);
+
+        if (states[0] == 1) {
+            $("#toggleTemp").prop("checked", true);
+        } else {
+            $("#toggleTemp").prop("checked", false);
+        }
+        if (states[1] == 1) {
+            $("#toggleBoden").prop("checked", true);
+        } else {
+            $("#toggleBoden").prop("checked", false);
+        }
+        if (states[2] == 1) {
+            $("#toggleLuft").prop("checked", true);
+        } else {
+            $("#toggleLuft").prop("checked", false);
+        }
+        if (states[3] == 1) {
+            $("#toggleLicht").prop("checked", true);
+        } else {
+            $("#toggleLicht").prop("checked", false);
+        }
+    });
 
 
 }
@@ -107,14 +127,14 @@ function toggleSensorBoard() {
 }
 
 
-//function for POSTing new sensor status if toggled on/off
+//function toggled den State der Sensoren über direkte Anfrage am Gerät
+//CRITICAL: Die Datenbank bevor diese Funktion aufgerufen wird mit den Korrekten States befüllt sein
+//sonst gibt es ein durcheinander und die states sind inkorrekt
 
 function postSensorState(sensortype) {
 
-    /*TODO POST der schön über die checkbox die geklickt wurde den sensortyp bekommt und dann das korrekte Post macht
-       direkt an Raspi der dann die Datenbank mit seinem neuen State aktualisiert
-         */
-
+    var request = "http://213.47.71.242:50000/ch/" + sensortype +"/toggle";
+    $.get(request);
 
 }
 

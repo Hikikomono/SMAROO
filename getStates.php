@@ -1,15 +1,15 @@
 <?php
 $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
+//holt sich die aktuellen states aus der Datenbank und returned diese als Array
 
-$sensortyp = $_GET['Sensortyp']; // checkt welcher table
 
 
-$get_temp_sql = "SELECT state FROM states WHERE sensor = '" . $sensortyp . "'";
+$get_temp_sql = "SELECT state FROM states";
 
 
 foreach ($pdo->query($get_temp_sql) as $row) {
-    $dataRequest = $row['state'];
+    $dataRequest[] = $row['state'];
 }
 
 
