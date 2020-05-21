@@ -23,6 +23,12 @@ function avoidAnonymCallback(key, value, sensortyp) {
         case "humidity":
             $(".unit").text("%");
             break;
+        case "air":
+            $(".unit").text("%");
+            break;
+        case "light":
+            $(".unit").text("%");
+            break;
         default:
             $(".unit").text("");
     }

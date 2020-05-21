@@ -78,10 +78,10 @@
                             src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png">
+                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('air')"><img src="https://img.icons8.com/ios/50/000000/dry.png">
                     Luftfeuchtigkeit</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" onclick="toggleSensorBoard();getBoard('light')">
                 <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png">
                     Lichtsensor</a>
             </li>
@@ -121,12 +121,12 @@
                                 src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
                 </li>
                 <li>
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
+                    <a href="#" onclick="toggleSensorBoard();getBoard('air')"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
-                    <a href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
+                    <a href="#" onclick="toggleSensorBoard();getBoard('light')"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
