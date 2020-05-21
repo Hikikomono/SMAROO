@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "faelb", "faelb");
+$pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
 
 $timestamp = $_GET['Zeitpunkt']; //Zeitpunkt
