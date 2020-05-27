@@ -114,6 +114,16 @@ function toggleSensorMenu() {
 
 }
 
+//hier werden alle states die on sind auf off geschalten
+function allStatesOff(){
+//    https://stackoverflow.com/questions/23911602/get-current-state-of-check-box-jquery
+    $("#toggleTemp").prop("checked", false);
+    $("#toggleBoden").prop("checked", false);
+    $("#toggleLuft").prop("checked", false);
+    $("#toggleLicht").prop("checked", false);
+}
+
+
 function toggleSensorBoard() {
 
     let statusCards = document.getElementById("statusCards");
