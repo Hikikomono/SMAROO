@@ -279,9 +279,10 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                     <div class="card text-center h-100">
                         <div class="card-body">
                             <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
-                            <h2 id="liveMeasureValue" class="card-text">12°C</h2>
+                            <h2 style="display: inline" id="liveMeasureValue" class="card-text">value</h2>
+                            <h2 style="display: inline" class="card-text unit">units</h2>
                             <hr/>
-                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">measure</button>
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">measure</button>
                             <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                         </div>
                     </div>
@@ -358,7 +359,7 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                         <div class="card-body">
                             <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
                             <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
-                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">apply</button>
+                            <button type="button" class="btn btn-outline-dark">apply</button>
                         </div>
                     </div>
                 </div>
@@ -367,7 +368,7 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                         <div class="card-body">
                             <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
                             <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
-                            <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
+                            <button type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>
                 </div>

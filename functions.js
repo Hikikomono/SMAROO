@@ -1,3 +1,6 @@
+//this var is needed so the LiveData query knows in which cardBoard we are in right now (temp, hum, light...)
+var actualcards = null;
+
 // create date that is applicable with sql
 function getDate() {
     var d = new Date(),
@@ -19,15 +22,19 @@ function avoidAnonymCallback(key, value, sensortyp) {
     switch (sensortyp) {
         case "temperature":
             $(".unit").text("°C");
+            actualcards = "temperature";
             break;
         case "humidity":
             $(".unit").text("%");
+            actualcards = "humidity";
             break;
         case "air":
             $(".unit").text("%");
+            actualcards = "air";
             break;
         case "light":
             $(".unit").text("%");
+            actualcards = "light";
             break;
         default:
             $(".unit").text("");
@@ -148,3 +155,24 @@ function postSensorState(sensortype) {
 
 }
 
+//getting the LiveData with a request from the Hardware Rest Interface directly; verwendet actualcards var to get the data
+function getLiveData(){
+
+    var request = "http://213.47.71.242/rq/" + actualcards + "/live";
+
+    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+        var obj = JSON.parse(data);
+        //"exception handling" if no data is in the db
+        if (obj[0] != null) {
+            var parsedNum = parseFloat(obj['data']).toFixed(2);
+            $("#liveMeasureValue").text(parsedNum);
+
+        } else {
+            $("#liveMeasureValue").text("-failure-");
+        }
+
+
+    });
+
+
+}
