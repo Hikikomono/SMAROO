@@ -154,7 +154,7 @@
                             <h2 class="card-title p-3 mb-2 bg-light text-dark rounded">Sensorstatus</h2>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Temperatur</h5>
+                                <h5 class="card-text">Temp</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleTemp" onclick="postSensorState('temperature')">
                                     <label class="custom-control-label" for="toggleTemp"></label>
@@ -162,7 +162,7 @@
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Bodenfeuchtigkeit</h5>
+                                <h5 class="card-text">Boden</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleBoden" onclick="postSensorState('humidity')">
                                     <label class="custom-control-label" for="toggleBoden"></label>
@@ -170,7 +170,7 @@
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Luftfeuchtigkeit</h5>
+                                <h5 class="card-text">Luft</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLuft" onclick="postSensorState('air')">
                                     <label class="custom-control-label" for="toggleLuft"></label>
@@ -178,7 +178,7 @@
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Lichtsensor</h5>
+                                <h5 class="card-text">Licht</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLicht" onclick="postSensorState('light')">
                                     <label class="custom-control-label" for="toggleLicht"></label>
@@ -197,12 +197,14 @@
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Temperatur</h2>
-                            <h2 style="display: inline">Informationstext zu Temperatursensor </h2>
+                            <p class="text-dark" >Joy-it SEN-DHT22 Temperatur-Sensor</p>
+                            <p class="text-dark" >Messbereich: -40 bis 80 Grad Celsius</p>
+                            <p class="text-dark" >Luftfeuchtigkeit: 0 bis 100 Prozent</p>
                             <hr/>
                             <div>
-                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
-                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
-                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
+                                <!--<h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>-->
                             </div>
                         </div>
                     </div>
@@ -212,12 +214,11 @@
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Bodenfeuchtigkeit</h2>
-                            <h2 style="display: inline">Informationstext zu Bodenfeuchtigkeit </h2>
+                            <p class="text-dark" >MAKERFACTORY MF-4838244 Sensor</p>
                             <hr/>
                             <div>
-                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
-                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
-                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
                             </div>
                         </div>
                     </div>
@@ -227,12 +228,13 @@
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Luftfeuchtigkeit</h2>
-                            <h2 style="display: inline">Informationstext zu Luftfeuchtigkeit </h2>
+                            <p class="text-dark" >Joy-it SEN-DHT22 Temperatur-Sensor</p>
+                            <p class="text-dark" >Messbereich: -40 bis 80 Grad Celsius</p>
+                            <p class="text-dark" >Luftfeuchtigkeit: 0 bis 100 Prozent</p>
                             <hr/>
                             <div>
-                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
-                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
-                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
                             </div>
                         </div>
                     </div>
@@ -242,12 +244,13 @@
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Lichtsensor</h2>
-                            <h2 style="display: inline">Informationstext zu Lichtsensor </h2>
+                            <p class="text-dark" >OSRAM Fotodiode DIL 1100 nm 60 °</p>
+                            <p class="text-dark" >Wellenlänge min.: 400 nm</p>
+                            <p class="text-dark" >Wellenlänge max.: 1100 nm</p>
                             <hr/>
                             <div>
-                                <h5 style="display: inline" class="text-muted card-text">vielleicht ein Link </h5>
-                                <h5 style="display: inline" class="text-muted card-text" id="monthValueMax">zur</h5>
-                                <h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>
+                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
                             </div>
                         </div>
                     </div>
