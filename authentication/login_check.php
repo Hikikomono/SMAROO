@@ -1,18 +1,50 @@
 <?php
-$email = $_POST['email_input'];
-$password = $_POST['password_input'];
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=smaroo", "smaroo", "smaroo");
 
+    $email = trim($_POST['email_input']);
+    $password = trim($_POST['password_input']);
+
+// retreive SALT and hashed PW of "email" (DB)
+
+    $stmt = $pdo->prepare("SELECT password, salt FROM users WHERE email = (?)");
+    $stmt->execute(array($email));
+
+    $row = $stmt->fetch();
+
+
+// append SALT to password and HASH (sha256) it
+
+    $salt = $row['salt'];
+    $password .= $salt;
+    $password = hash("sha256", $password);
+
+
+// compare hashed value from db (con. to email) and entered hashed pw
+    
 //https://www.php.net/manual/de/function.password-verify.php
-if($email == 'rob@rob' and $password == '1337')
-{
-    session_start();
-    $_SESSION['sid']=session_id();
-    header("location:securepage.php");
-    exit;
-}
-else{
-    header("HTTP/1.0 401 Unauthorized Error ");
-    http_redirect("login.php");
-    exit;
+    if ($password == $row['password']) {
+        session_start();
+        $_SESSION['sid'] = session_id();
+
+        $pdo = null;
+        $stmt = null;
+
+        header("Location: ../index.php");
+        exit;
+    } else {
+        $pdo = null;
+        $stmt = null;
+        header("HTTP/1.0 401 Unauthorized Error ");
+
+        http_redirect("login.php");
+        exit;
+    }
+
+
+}catch (PDOException $e){
+    echo "Error while connection to DB! \n";
+    echo $e->getMessage();
+    die();
 }
 ?>
