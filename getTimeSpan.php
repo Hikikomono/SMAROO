@@ -3,16 +3,13 @@
 $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
 
-$timestamp = $_GET['Zeitpunkt']; //Zeitpunkt
-$key = $_GET['Key']; //checkt ob DAY, WEEK, MONTH
+$fromDate = $_GET['From']; //dateFrom
+$toDate = $_GET['To']; //dateTo
 $sensortyp = $_GET['Sensortyp']; // checkt welcher table
-//print_r($key);0
 
 
-$get_temp_sql = "SELECT AVG(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date) UNION ALL
- SELECT MAX(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date) UNION ALL
- SELECT MIN(data) FROM " . $sensortyp . " WHERE " . $key . "('" . $timestamp . "') = " . $key . "(date)";
-//$temp = $pdo->query($get_temp_sql)->fetch();
+$get_temp_sql = "SELECT CONVERT(DATE, date), AVG(data) FROM " . $sensortyp . " WHERE date BETWEEN '" . $fromDate . "' AND '" . $toDate . "' GROUP BY CONVERT(DATE, date)";
+
 
 
 foreach ($pdo->query($get_temp_sql) as $row) {

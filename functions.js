@@ -177,7 +177,7 @@ function getLiveData(){
 
 }
 
-//TODO exceptionhandling!!!!
+
 //get data from the Datepicker put it to database and create a chart with chart.js
 function getDatePickerDataAndCreateChart() {
         var dateStart = new Date($('#calStart').val());
@@ -191,37 +191,43 @@ function getDatePickerDataAndCreateChart() {
 
         };
 
-        startDay = dateStart.getDate();
-        startMonth = dateStart.getMonth() + 1;
+        //der zusätzlihce code ist weil javascript die leading 0 cancelled die fürs GET wichtig ist
+        startDay = ("0" + dateStart.getDate()).slice(-2)
+        startMonth = ("0" + (dateStart.getMonth() + 1)).slice(-2)
         startYear = dateStart.getFullYear();
 
-        endDay = dateEnd.getDate()
-        endMonth = dateEnd.getMonth() + 1;
+        endDay = ("0" + dateEnd.getDate()).slice(-2)
+        endMonth = ("0" + (dateEnd.getMonth() + 1)).slice(-2)
         endYear = dateEnd.getFullYear();
 
-        var fromDate = [startDay, startMonth, startYear].join('.');
-        var toDate = [endDay, endMonth, endYear].join('.');
+        var fromDate = [startYear, startMonth, startDay].join('-');
+        var toDate = [endYear, endMonth, endDay].join('-');
 
 
 
 
         //tausche den Titel der Karte mit dem Chart zu den gewähltem intervall
-$('#timespan').text(fromDate +" - " +toDate);
+$('#timespan').text(fromDate +" to " +toDate);
 
         //TODO nun holen wir die Daten von der Datenbank und bringen sie in ein array, welches an das Chart übergeben wird
-
-//Problem : mehrere Timestamps pro tag, wir wollen nur das avg
 
 
     //erst erstellen wir ein labels array mit der anzahl an Tagen die gewählt wurden die dann als Datenpunkte im chart dienen
     var dataPoints = new Array();
 
     for (i = 1; i <= diff; i++){
-    dataPoints.push("d"+i);
+        dataPoints.push("d"+i);
     }
 
 
-//now the part for the actual chart creation
+//TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
+    //TODO das Chart muss clean werden wenn man switcht!
+    var request = "getTimeSpan.php?From=" + fromDate + "&To=" + toDate +"&Sensortyp=" +actualcards;
+   $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+       var obj = JSON.parse(data);
+
+
+//now the part for the actual chart creation, inside the request to get the obj
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -232,9 +238,9 @@ $('#timespan').text(fromDate +" - " +toDate);
             labels: dataPoints,
             datasets: [{
                 label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                backgroundColor: 'rgb(112,179,232)',
+                borderColor: 'rgb(42,48,73)',
+                data: obj
             }]
         },
 
@@ -242,4 +248,6 @@ $('#timespan').text(fromDate +" - " +toDate);
         options: {}
     });
 
+
+   }); //ende request
 }
