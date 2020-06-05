@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="style_1.css">
     <!-- jQuery Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--Script for Chart.js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- Our Scripts -->
     <script src="functions.js"></script>
@@ -360,17 +362,23 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
-                            <img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">
-                            <button type="button" class="btn btn-outline-dark">apply</button>
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Zeitintervall</h5>
+
+                            <input style="display: inline" type="date" id="calStart" name="calendarStart">
+
+
+                            <input style="display: inline" type="date" id="calEnd" name="calendarEnd">
+                            <hr/>
+                            <!--<img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">-->
+                            <button type="button" class="btn btn-outline-dark" onclick="getDatePickerDataAndCreateChart()">anzeigen</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">01.04 - 01.05</h5>
-                            <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded" id="timespan">01.04 - 01.05</h5>
+                            <canvas id="myChart"></canvas>
                             <button type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>
