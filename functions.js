@@ -182,6 +182,14 @@ function getLiveData(){
 function getDatePickerDataAndCreateChart() {
         var dateStart = new Date($('#calStart').val());
         var dateEnd = new Date($('#calEnd').val());
+        var diff = (dateEnd-dateStart)/(1000*60*60*24); //berechnet Tage für die Chart erstellung - dargestellte Labels; die Subtraktion ergibt millisekunden
+
+//exceptionhandling; error killt die restliche Ausführung : )
+        if (dateStart >= dateEnd){
+            alert("Start Größer oder Gleich Ende sein! Bitte Eingabe anpassen.")
+            throw new Error("Start kann nicht vor Ende sein!");
+
+        };
 
         startDay = dateStart.getDate();
         startMonth = dateStart.getMonth() + 1;
@@ -193,11 +201,27 @@ function getDatePickerDataAndCreateChart() {
 
         var fromDate = [startDay, startMonth, startYear].join('.');
         var toDate = [endDay, endMonth, endYear].join('.');
-        //alert([day, month, year].join('/'));
+
+
+
 
         //tausche den Titel der Karte mit dem Chart zu den gewähltem intervall
-$('#timespan').text(fromDate +"-" +toDate);
-        //part for chart creation
+$('#timespan').text(fromDate +" - " +toDate);
+
+        //TODO nun holen wir die Daten von der Datenbank und bringen sie in ein array, welches an das Chart übergeben wird
+
+//Problem : mehrere Timestamps pro tag, wir wollen nur das avg
+
+
+    //erst erstellen wir ein labels array mit der anzahl an Tagen die gewählt wurden die dann als Datenpunkte im chart dienen
+    var dataPoints = new Array();
+
+    for (i = 1; i <= diff; i++){
+    dataPoints.push("d"+i);
+    }
+
+
+//now the part for the actual chart creation
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -205,7 +229,7 @@ $('#timespan').text(fromDate +"-" +toDate);
 
         // The data for our dataset
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: dataPoints,
             datasets: [{
                 label: 'My First dataset',
                 backgroundColor: 'rgb(255, 99, 132)',
