@@ -7,7 +7,7 @@ try {
 
 // retreive SALT and hashed PW of "email" (DB)
 
-    $stmt = $pdo->prepare("SELECT password, salt FROM users WHERE email = (?)");
+    $stmt = $pdo->prepare("SELECT password, salt, email FROM users WHERE email = (?)");
     $stmt->execute(array($email));
 
     $row = $stmt->fetch();
@@ -21,11 +21,12 @@ try {
 
 
 // compare hashed value from db (con. to email) and entered hashed pw
-    
+
 //https://www.php.net/manual/de/function.password-verify.php
-    if ($password == $row['password']) {
+    if ($password == $row['password'] && $email == $row['email']) {
         session_start();
         $_SESSION['sid'] = session_id();
+
 
         $pdo = null;
         $stmt = null;
@@ -35,9 +36,9 @@ try {
     } else {
         $pdo = null;
         $stmt = null;
-        header("HTTP/1.0 401 Unauthorized Error ");
+        header("Location: ../login.php");
+        //header("HTTP/1.0 401 Unauthorized Error ");
 
-        http_redirect("login.php");
         exit;
     }
 

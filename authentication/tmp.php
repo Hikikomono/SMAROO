@@ -1,31 +1,13 @@
-<?php
+<form action="authentication/login_check.php" method="post">
 
+    <label for="email_input"><b>Email</b></label>
+    <input type="email" placeholder="Enter email" name="email_input" required>
+    <input type="date" >
 
+    <label for="password_input"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password_input" required>
 
-    $salt = bin2hex(random_bytes(256));
+    <button type="submit">Login</button>
+    </div>
 
-    $password_1 = "abc";
-    $password_1 .= $salt;
-    $password_1 = hash("sha256", $password);
-    echo $password_1 . "<br>";
-
-    $password_2 = "abc";
-    $password_2 .= $salt;
-    $password_2 = hash("sha256", $password);
-    echo $password_2 . "<br>";
-
-
-
- /*
-//TODO PW Länge, PW match direkt in form lösen
-
-if($data['password_input'] !== $data['password_confirm']){
-    die("Passwords don't match!");
-}
-
-echo $salt . "\n";
-echo "email: " . $email . " pwd: " . $password;
-//
-*/
-?>
-
+</form>
