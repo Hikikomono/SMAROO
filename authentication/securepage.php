@@ -7,6 +7,6 @@ if($_SESSION['sid']==session_id())
 }
 else
 {
-    header("location:login.php");
+    header("location:../login.php");
 }
 ?>

@@ -1,6 +1,9 @@
 <?php
-
-
+session_start();
+if(!$_SESSION['sid']==session_id())
+{
+    header("location:/login.php");
+}
 ?>
 
 
