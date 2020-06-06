@@ -221,12 +221,12 @@ $('#timespan').text(fromDate +" to " +toDate);
 
     //sonst doppelte canvas
 
-    //$('#myChart').remove();
-    //$('#divOverChart').append('<canvas id="myChart"></canvas>')
-    let canvas = document.createElement('canvas');
-    let div = document.getElementById('divOverChart');
-    canvas.id = "myChart";
-    div.appendChild(canvas);
+    $('#myChart').remove();
+    $('#divOverChart').append('<canvas id="myChart"></canvas>')
+    //let canvas = document.createElement('canvas');
+    //let div = document.getElementById('divOverChart');
+    //canvas.id = "myChart";
+    //div.appendChild(canvas);
 
 //TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
     //TODO das Chart muss clean werden wenn man switcht!
