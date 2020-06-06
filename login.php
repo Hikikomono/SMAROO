@@ -25,8 +25,9 @@
     <label for="email_input" class="sr-only">Email address</label>
     <input type="email" name="email_input" class="form-control" placeholder="Email address" required="" autofocus="">
     <label for="password_input" class="sr-only">Password</label>
-
     <input type="password" name="password_input" class="form-control" placeholder="Password" required="">
+
+    <a href="register.php">Register new Account</a>
     <button class="btn btn-lg btn-primary btn-block" type="submit" id="confirm_btn">Sign in</button>
 </form>
 

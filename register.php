@@ -39,5 +39,7 @@
     <label for="password_confirm" class="sr-only">Confirm Password</label>
     <input type="password" class="form-control" placeholder="Re-Enter Password" name="password_confirm" required>
 
+    <a href="login.php">Login to Smaroo</a>
+
     <button id="confirm_btn" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 </form>
