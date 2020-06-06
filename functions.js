@@ -164,7 +164,7 @@ function getLiveData(){
         var obj = data.data;
         //"exception handling" if no data is in the db
         if (obj != null) {
-            var parsedNum = parseFloat(obj['data']).toFixed(2);
+            var parsedNum = parseFloat(obj).toFixed(2);
             $("#liveMeasureValue").text(parsedNum);
 
         } else {
