@@ -7,7 +7,7 @@ try {
 
 // retreive SALT and hashed PW of "email" (DB)
 
-    $stmt = $pdo->prepare("SELECT password, salt, email FROM users WHERE email = (?)");
+    $stmt = $pdo->prepare("SELECT *  FROM users WHERE email = (?)");
     $stmt->execute(array($email));
 
     $row = $stmt->fetch();
@@ -26,6 +26,8 @@ try {
     if ($password == $row['password'] && $email == $row['email']) {
         session_start();
         $_SESSION['sid'] = session_id();
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['email'] = $row['email'];
 
 
         $pdo = null;
