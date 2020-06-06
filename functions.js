@@ -222,7 +222,7 @@ $('#timespan').text(fromDate +" to " +toDate);
     //sonst doppelte canvas
 
     $('#myChart').remove();
-    $('#divOverChart').text('<canvas id="myChart"></canvas>')
+    $('#divOverChart').append('<canvas id="myChart"></canvas>')
 
 //TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
     //TODO das Chart muss clean werden wenn man switcht!
