@@ -1,6 +1,6 @@
 <?php
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=smaroo", "smaroo", "smaroo");
+    $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
     $salt = bin2hex(random_bytes(64));
 

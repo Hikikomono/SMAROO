@@ -1,6 +1,6 @@
 <?php
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=smaroo", "smaroo", "smaroo");
+    $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
     $email = trim($_POST['email_input']);
     $password = trim($_POST['password_input']);
