@@ -121,7 +121,6 @@ else{
                 <?php
                    echo"<h4> $username 's Smartroom</h4>"
                 ?>
-
             </div>
 
 
