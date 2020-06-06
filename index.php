@@ -398,7 +398,9 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                     <div class="card text-center h-100">
                         <div class="card-body">
                             <h5 class="card-title p-3 mb-2 bg-light text-dark rounded" id="timespan">-noch kein Zeitintervall gewählt-</h5>
-                            <canvas id="myChart"></canvas>
+                            <!--Konstruktion gegen doppelte Canvas-->
+                            <div id="#divOverChart"><canvas id="myChart"></canvas></div>
+
                             <button type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>
