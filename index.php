@@ -66,12 +66,14 @@ else{
         </button>
     </div>
 
-    <!-- Logout / (evtl) Profile Button -->
+    <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
+    <button type="submit" class="btn btn-secondary navbar-btn">
+        <a href="profile.php">Profile</a>
+    </button>
 
     <button type="submit" class="btn btn-secondary navbar-btn">
         <a href="logout.php">Logout</a>
     </button>
-
 
     <!--button for navbar on smaller screens-->
     <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
