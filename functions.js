@@ -163,7 +163,7 @@ function getLiveData(){
     $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
         var obj = data;
         //"exception handling" if no data is in the db
-        //alert(obj.toString());
+        alert(obj.toString());
         if (obj[0] != null) {
             var parsedNum = parseFloat(obj['data']).toFixed(2);
             $("#liveMeasureValue").text(parsedNum);
