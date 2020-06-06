@@ -180,6 +180,7 @@ function getLiveData(){
 
 //get data from the Datepicker put it to database and create a chart with chart.js
 function getDatePickerDataAndCreateChart() {
+        var chart = null;
         var dateStart = new Date($('#calStart').val());
         var dateEnd = new Date($('#calEnd').val());
         var diff = (dateEnd-dateStart)/(1000*60*60*24); //berechnet Tage für die Chart erstellung - dargestellte Labels; die Subtraktion ergibt millisekunden
@@ -229,7 +230,7 @@ $('#timespan').text(fromDate +" to " +toDate);
 
 //now the part for the actual chart creation, inside the request to get the obj
     var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
+    chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
 
