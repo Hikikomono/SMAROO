@@ -4,7 +4,12 @@ if(!$_SESSION['sid']==session_id())
 {
     header("location:/login.php");
 }
+
+else{
+    $username = $_SESSION['username'];
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -59,6 +64,13 @@ if(!$_SESSION['sid']==session_id())
         </button>
     </div>
 
+    <!-- Logout / (evtl) Profile Button -->
+
+    <button type="submit" class="btn btn-secondary navbar-btn">
+        <a href="logout.php">Logout</a>
+    </button>
+
+
     <!--button for navbar on smaller screens-->
     <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,8 +116,13 @@ if(!$_SESSION['sid']==session_id())
         <div class="make-me-sticky">
             <div class="sidebar-header">
                 <img class="img-fluid rounded-circle" src="img/profile.jfif" alt="profilepic">
-                <h4>Faelb's Smartroom</h4>
+                <?php
+                   echo"<h4> $username 's Smartroom</h4>"
+                ?>
+
             </div>
+
+
 
             <ul id="test" class="list-unstyled components">
                 <!--<p>Dummy Heading</p>-->
