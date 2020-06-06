@@ -161,9 +161,9 @@ function getLiveData(){
     var request = "http://213.47.71.242:50000/rq/" + actualcards + "/live";
 
     $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
-        var obj = JSON.parse(data);
+        var obj = data;
         //"exception handling" if no data is in the db
-        alert(obj.toString());
+        //alert(obj.toString());
         if (obj[0] != null) {
             var parsedNum = parseFloat(obj['data']).toFixed(2);
             $("#liveMeasureValue").text(parsedNum);

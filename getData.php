@@ -18,6 +18,6 @@ $get_temp_sql = "SELECT AVG(data) FROM " . $sensortyp . " WHERE " . $key . "('" 
 foreach ($pdo->query($get_temp_sql) as $row) {
     $dataRequest[] = $row['AVG(data)'];
 }
-
+//echo json_encode($dataRequest);
 echo json_encode($dataRequest);
 ?>
