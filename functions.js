@@ -219,7 +219,8 @@ $('#timespan').text(fromDate +" to " +toDate);
         dataPoints.push("d"+i);
     }
 
-    $('#myChart').empty();
+    //sonst doppelte canvas
+    $('#myChart').remove();
 
 //TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
     //TODO das Chart muss clean werden wenn man switcht!
