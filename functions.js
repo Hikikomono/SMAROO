@@ -237,7 +237,7 @@ $('#timespan').text(fromDate +" to " +toDate);
         data: {
             labels: dataPoints,
             datasets: [{
-                label: 'My First dataset',
+                label: actualcards,
                 backgroundColor: 'rgb(112,179,232)',
                 borderColor: 'rgb(42,48,73)',
                 data: obj
