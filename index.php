@@ -53,14 +53,14 @@ if (!$_SESSION['sid'] == session_id()) {
 <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
 
     <a class="navbar-brand" href="#">SmaRoo</a>
-    <div class="text-">
 
-        <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
-        <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
-                onclick="sidebarToggle()">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+    <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
+    <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
+            onclick="sidebarToggle()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
 
     <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
     <button type="submit" class="btn btn-secondary navbar-btn">
@@ -120,7 +120,6 @@ if (!$_SESSION['sid'] == session_id()) {
             </li>
         </ul>
     </div>
-
 </nav>
 
 <!-- Page Content uses flexboxes from bootstrap & the Gridsystem for responsiveness-->

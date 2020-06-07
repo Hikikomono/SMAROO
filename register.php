@@ -30,20 +30,22 @@ if (isset($_SESSION['sid'])){
 <link rel="stylesheet" href="signin.css">
 
 <body class="text-center">
-<form class="form-signin" action="authentication/register_check.php" method="post">
+<form class="form-signin" action="authentication/register_check.php"
+      oninput='password_confirm.setCustomValidity(password_confirm.value != password_input.value ? "Passwords do not match." : "" )'
+      method="post">
     <h1 class="h3 mb-3 font-weight-normal">Create Smaroo Account </h1>
 
     <label for="username_input" class="sr-only"><b>Username</b></label>
-    <input type="text" class="form-control" placeholder="Username" name="username_input" required="" autofocus="">
+    <input type="text" class="form-control" placeholder="Username" name="username_input" minlength="3" required="" autofocus="">
 
     <label for="email_input" class="sr-only">Email address</label>
     <input type="email" name="email_input" class="form-control" placeholder="Email address" required="" >
 
     <label for="password_input" class="sr-only">Password</label>
-    <input type="password" name="password_input" class="form-control" placeholder="Password" required="">
+    <input type="password" name="password_input" class="form-control" minlength="5" placeholder="Password" required="">
 
     <label for="password_confirm" class="sr-only">Confirm Password</label>
-    <input type="password" class="form-control" placeholder="Re-Enter Password" name="password_confirm" required>
+    <input type="password" class="form-control" placeholder="Re-Enter Password" minlength="5" name="password_confirm" required>
 
     <a href="login.php">Login to Smaroo</a>
 
