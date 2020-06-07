@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!$_SESSION['sid'] == session_id()) {
-    header("location:/login.php");
+    header("location: login.php");
 } else {
     $username = $_SESSION['username'];
 }
@@ -55,14 +55,17 @@ if (!$_SESSION['sid'] == session_id()) {
     <a class="navbar-brand" href="#">SmaRoo</a>
 
     <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
-    <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
-            onclick="sidebarToggle()">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="text0">
+        <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
+                onclick="sidebarToggle()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
 
 
     <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
+    <!--
     <button type="submit" class="btn btn-secondary navbar-btn">
         <a href="profile.php">Profile</a>
     </button>
@@ -70,7 +73,7 @@ if (!$_SESSION['sid'] == session_id()) {
     <button type="submit" class="btn btn-secondary navbar-btn">
         <a href="logout.php">Logout</a>
     </button>
-
+-->
     <!--button for navbar on smaller screens-->
     <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
