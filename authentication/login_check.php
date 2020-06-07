@@ -1,4 +1,5 @@
 <?php
+session_start();
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
