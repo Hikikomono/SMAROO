@@ -65,7 +65,7 @@ if (!$_SESSION['sid'] == session_id()) {
 
 
     <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
-    <!--
+
     <button type="submit" class="btn btn-secondary navbar-btn">
         <a href="profile.php">Profile</a>
     </button>
@@ -73,7 +73,7 @@ if (!$_SESSION['sid'] == session_id()) {
     <button type="submit" class="btn btn-secondary navbar-btn">
         <a href="logout.php">Logout</a>
     </button>
--->
+
     <!--button for navbar on smaller screens-->
     <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

@@ -8,6 +8,45 @@ $email_session = $_SESSION['email'];
 $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
 
+echo $_POST['image'] . "<br>";
+
+if (!empty($_FILES['image']['name'])){
+    echo "start image upload <br>";
+
+        $name = $_FILES['image']['name']; // | 'name' beinhaltet Dateiname auf dem Computer des Benutzers
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES['image']['name']);
+
+        echo "Filename: $name <br>";
+        echo "target file: $target_file <br>";
+
+        // Select file type
+        //pathinfo(path_to_uploaded_file, return_slice_of_path_file)
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        echo "Filetype: " . $imageFileType . "<br>";
+
+        // Valid file extensions
+        $extensions_arr = array("jpg","jpeg","png","gif");
+
+        // Check extension
+        if( in_array($imageFileType,$extensions_arr) ) {
+            echo "typecheck bestanden <br>";
+
+            // Insert record
+            $stmt = $pdo->prepare("UPDATE users
+                                            SET image = ?
+                                            WHERE email = ?");
+           $stmt->bindParam(1, $name);
+           $stmt->bindParam(2, $email_session);
+
+            if($stmt->execute()){
+                // Upload file
+                echo "in upload file <br>";
+                move_uploaded_file($_FILES['image']['images'], $target_dir . $name);
+            }
+        }
+}
+
 if (isset($_POST['password_old']) && !empty($_POST['password_old']) && isset($_POST['password_new']) && !empty($_POST['password_new'])){
     //check if entered pw is valid
     echo "in pw if <br>";
@@ -87,6 +126,6 @@ else {
 }
 
 //redirect to profile.php
-header("Location: ../profile.php");
+//header("Location: ../profile.php");
 
 ?>

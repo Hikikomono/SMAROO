@@ -1,8 +1,12 @@
 <?php
 session_start();
+if (!$_SESSION['sid'] == session_id()) {
+    header("location: login.php");
+}
 
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
+$image_src = $_SESSION['image_src'];
 ?>
 
 <!DOCTYPE html>
@@ -57,14 +61,15 @@ $email = $_SESSION['email'];
 <div class="container center-content">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 p-0">
-            <!-- User Image -->
-            <img class="img-fluid rounded-circle" id="profile-image"
-                 src="https://www.vhv.rs/dpng/d/256-2569650_men-profile-icon-png-image-free-download-searchpng.png"
-                 alt="profile image">
-            <input type="file" id="image-upload">
 
 
-            <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post">
+
+            <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post" enctype="multipart/form-data" >
+                <!-- User Image -->
+                <img class="img-fluid rounded-circle" id="profile_image"
+                    <?php echo "src=$image_src" ?> src= alt="profile image">
+                <input type="file" id="image_upload" name="image" >
+
                 <!-- User info -->
                 <div class="jumbotron">
                     <h3> User info</h3>
@@ -110,7 +115,7 @@ $email = $_SESSION['email'];
 <!-- TODO evlt auslagern ins script file -->
 <script>
     <!-- TODO entfernen https://stackoverflow.com/questions/41406509/add-a-profile-picture-in-form-in-html-and-css -->
-    $("#profile-image").click(function (e) {
-        $("#image-upload").click();
+    $("#profile_image").click(function (e) {
+        $("#image_upload").click();
     });
 </script>

@@ -30,6 +30,13 @@ try {
         $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
 
+        if ($_SESSION['image'] != null) {
+            $_SESSION['image_src'] = $row['image'];
+        }
+        else{
+            $_SESSION['image_src'] = "images/default_image.png";
+        }
+
 
         $pdo = null;
         $stmt = null;
