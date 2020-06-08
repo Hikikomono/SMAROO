@@ -30,7 +30,6 @@ try {
 
         if ($row['image'] != null) {
             $_SESSION['image'] = $row['image'];
-            echo $_SESSION['image'];
         }
         else{
             $_SESSION['image'] = "img/default_image.png";
