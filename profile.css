@@ -5,7 +5,7 @@ body {
 
 .center-content{
 
-    width: 70%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,6 +29,22 @@ body {
 .jumbotron{
     background: white;
     padding: 2rem;
+}
+
+/* test image cropper for round img */
+.image-cropper {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.profile-pic {
+    display: inline;
+    margin: 0 auto;
+    margin-left: -25%; //centers the image
+height: 100%;
+    width: auto;
 }
 
 

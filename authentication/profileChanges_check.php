@@ -10,19 +10,17 @@ $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
 echo $_POST['image'] . "<br>";
 
+//Update Profile Image
 if (!empty($_FILES['image']['name'])){
     echo "start image upload <br>";
 
         $name = $_FILES['image']['name']; // | 'name' beinhaltet Dateiname auf dem Computer des Benutzers
-        $target_dir = "images/";
-        $target_file = $target_dir . basename($_FILES['image']['name']);
 
-        echo "Filename: $name <br>";
-        echo "target file: $target_file <br>";
+        echo "Filename: $name <br>";;
 
         // Select file type
         //pathinfo(path_to_uploaded_file, return_slice_of_path_file)
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($name,PATHINFO_EXTENSION));
         echo "Filetype: " . $imageFileType . "<br>";
 
         // Valid file extensions
@@ -32,21 +30,26 @@ if (!empty($_FILES['image']['name'])){
         if( in_array($imageFileType,$extensions_arr) ) {
             echo "typecheck bestanden <br>";
 
+            //convert to base64
+            $image_base64 = base64_encode(file_get_contents($_FILES['image']['tmp_name']) );
+            $image_base64 = 'data:image/'.$imageFileType.';base64,'.$image_base64;
             // Insert record
             $stmt = $pdo->prepare("UPDATE users
                                             SET image = ?
                                             WHERE email = ?");
-           $stmt->bindParam(1, $name);
+           $stmt->bindParam(1, $image_base64);
            $stmt->bindParam(2, $email_session);
 
             if($stmt->execute()){
                 // Upload file
                 echo "in upload file <br>";
-                move_uploaded_file($_FILES['image']['images'], $target_dir . $name);
+                $_SESSION['image'] = $image_base64;
+
             }
         }
 }
 
+//Update Password
 if (isset($_POST['password_old']) && !empty($_POST['password_old']) && isset($_POST['password_new']) && !empty($_POST['password_new'])){
     //check if entered pw is valid
     echo "in pw if <br>";
@@ -90,6 +93,7 @@ if (isset($_POST['password_old']) && !empty($_POST['password_old']) && isset($_P
     }
 }
 
+//Update Username
 if (isset($_POST['username']) && !empty($_POST['username'])) {
 
     $stmt = $pdo->prepare(
@@ -105,6 +109,7 @@ if (isset($_POST['username']) && !empty($_POST['username'])) {
     }
 }
 
+//Update Email
 if (isset($_POST['email']) && !empty($_POST['email'])) {
     //$stmt = null;
     $stmt = $pdo->prepare(

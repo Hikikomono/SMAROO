@@ -30,11 +30,12 @@ try {
         $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
 
-        if ($_SESSION['image'] != null) {
-            $_SESSION['image_src'] = $row['image'];
+        if ($row['image'] != null) {
+            $_SESSION['image'] = $row['image'];
+            echo $_SESSION['image'];
         }
         else{
-            $_SESSION['image_src'] = "images/default_image.png";
+            $_SESSION['image'] = "images/default_image.png";
         }
 
 

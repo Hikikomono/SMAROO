@@ -4,6 +4,7 @@ if (!$_SESSION['sid'] == session_id()) {
     header("location: login.php");
 } else {
     $username = $_SESSION['username'];
+    $image = $_SESSION['image'];
 }
 ?>
 
@@ -131,7 +132,7 @@ if (!$_SESSION['sid'] == session_id()) {
     <nav id="sidebar" class="d-none d-md-block">
         <div class="make-me-sticky">
             <div class="sidebar-header">
-                <img class="img-fluid rounded-circle" src="img/profile.jfif" alt="profilepic">
+                <img class="img-fluid rounded-circle" <?php echo "src=$image" ?> alt="profilepic">
                 <?php
                 echo "<h4> $username 's Smartroom</h4>"
                 ?>

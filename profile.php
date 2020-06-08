@@ -6,7 +6,7 @@ if (!$_SESSION['sid'] == session_id()) {
 
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
-$image_src = $_SESSION['image_src'];
+$image = $_SESSION['image'];
 ?>
 
 <!DOCTYPE html>
@@ -58,16 +58,14 @@ $image_src = $_SESSION['image_src'];
 
 
 <!-- Profile Content-->
-<div class="container center-content">
+<div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 p-0">
-
-
-
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post" enctype="multipart/form-data" >
+
                 <!-- User Image -->
-                <img class="img-fluid rounded-circle" id="profile_image"
-                    <?php echo "src=$image_src" ?> src= alt="profile image">
+                <img class="rounded-circle" id="profile_image"
+                    <?php echo "src=$image" ?> alt="profile image">
                 <input type="file" id="image_upload" name="image" >
 
                 <!-- User info -->
