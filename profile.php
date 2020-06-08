@@ -9,14 +9,17 @@ $email = $_SESSION['email'];
 $image = $_SESSION['image'];
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <title>smaroo - Profile Settings</title>
+    <link rel="icon" href="img/title_icon.png" type="image/icon type">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -26,13 +29,8 @@ $image = $_SESSION['image'];
 
     <!-- Our Bootstrap -->
     <link rel="stylesheet" href="style_1.css">
-    <!-- jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!--Script for Chart.js-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     <link rel="stylesheet" href="profile.css">
-    <!-- Our Scripts -->
-    <script src="functions.js"></script>
 
 </head>
 <body>
@@ -41,19 +39,7 @@ $image = $_SESSION['image'];
 <!-- Navigation -->
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
-
     <a class="navbar-brand" href="index.php">SmaRoo</a>
-
-    <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
-    <button type="submit" class="btn btn-secondary navbar-btn">
-        <a href="profile.php">Profile</a>
-    </button>
-
-    <button type="submit" class="btn btn-secondary navbar-btn">
-        <a href="logout.php">Logout</a>
-    </button>
-
-
 </nav>
 
 
@@ -61,11 +47,13 @@ $image = $_SESSION['image'];
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-            <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post" enctype="multipart/form-data" >
+            <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post" enctype="multipart/form-data">
 
                 <!-- User Image -->
+                <div class="text-center">
                 <img class="rounded-circle" id="profile_image"
-                    <?php echo "src=$image" ?> alt="profile image">
+                    <?php echo "src=$image" ?> alt="profile image" style="max-width: 300px; max-height: 300px; padding: 20px;">
+                </div>
                 <input type="file" id="image_upload" name="image" >
 
                 <!-- User info -->
@@ -75,13 +63,14 @@ $image = $_SESSION['image'];
                         <div class="form-group ">
                             <label for="username">Username</label>
                             <?php
-                            echo "<input type='text' class='form-control' name='username' placeholder='$username'>"
+                            echo "<input type='text' class='form-control' name='username' minlength='3' placeholder='$username'
+                                    autocomplete='off'>"
                             ?>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
                             <?php
-                            echo "<input type='email' class='form-control' name='email' placeholder='$email'>"
+                            echo "<input type='email' class='form-control' name='email' autocomplete='off' placeholder='$email'>"
                             ?>
                         </div>
                     </div>
@@ -92,11 +81,11 @@ $image = $_SESSION['image'];
                     <h3> Security </h3>
                     <div class="form-group">
                         <label for="password_old">Current Password</label>
-                        <input type="password" class="form-control" name="password_old">
+                        <input type="password" class="form-control"name="password_old">
                     </div>
                     <div class="form-group">
                         <label for="password_new">New Password</label>
-                        <input type="password" class="form-control" name="password_new">
+                        <input type="password" class="form-control" minlength='5' name="password_new">
                     </div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit" id="confirm_btn">Confirm Changes
@@ -110,9 +99,7 @@ $image = $_SESSION['image'];
 </body>
 </html>
 
-<!-- TODO evlt auslagern ins script file -->
 <script>
-    <!-- TODO entfernen https://stackoverflow.com/questions/41406509/add-a-profile-picture-in-form-in-html-and-css -->
     $("#profile_image").click(function (e) {
         $("#image_upload").click();
     });

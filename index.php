@@ -19,7 +19,10 @@ if (!$_SESSION['sid'] == session_id()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bare - Start Bootstrap Template</title>
+    <title>smaroo - Dashboard</title>
+
+    <link rel="icon" href="img/title_icon.png" type="image/icon type">
+
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -63,17 +66,6 @@ if (!$_SESSION['sid'] == session_id()) {
         </button>
     </div>
 
-
-
-    <!-- Logout / (evtl) Profile Button  TODO button rechtsbündig machen-->
-
-    <button type="submit" class="btn btn-secondary navbar-btn">
-        <a href="profile.php">Profile</a>
-    </button>
-
-    <button type="submit" class="btn btn-secondary navbar-btn">
-        <a href="logout.php">Logout</a>
-    </button>
 
     <!--button for navbar on smaller screens-->
     <button class="navbar-toggler btn-info" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -132,7 +124,9 @@ if (!$_SESSION['sid'] == session_id()) {
     <nav id="sidebar" class="d-none d-md-block">
         <div class="make-me-sticky">
             <div class="sidebar-header">
-                <img class="img-fluid rounded-circle" <?php echo "src=$image" ?> alt="profilepic">
+                <a href="profile.php">
+                    <img class="img-fluid rounded-circle" <?php echo "src=$image" ?> alt="profilepic">
+                </a>
                 <?php
                 echo "<h4> $username 's Smartroom</h4>"
                 ?>
@@ -171,6 +165,16 @@ if (!$_SESSION['sid'] == session_id()) {
                                 src="https://img.icons8.com/ios/48/000000/electrical-sensor.png"/> Sensorcontrol</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="profile.php "><img
+                                src="https://img.icons8.com/wired/64/000000/admin-settings-male.png"> Profile </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="logout.php" "><img
+                            src="https://img.icons8.com/wired/64/000000/logout-rounded.png"> Logout </a>
+                </li>
+
             </ul>
         </div>
     </nav>
@@ -313,7 +317,7 @@ if (!$_SESSION['sid'] == session_id()) {
         -->
 
 
-        <div id="sensorCards"><!--for Sensors/Dashboard Cardboard-->
+        <div id="sensorCards" style="padding-top: 10px;"><!--for Sensors/Dashboard Cardboard-->
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">

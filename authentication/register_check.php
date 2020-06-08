@@ -33,8 +33,7 @@ try {
     header("Location: ../login.php");
 
 }catch(PDOException $e){
-    echo "Error while trying to connect to the DB";
-    echo $e->getMessage();
+    echo "Error while connecting to Database: $e->getMessage()";
     die();
 } /*
 
