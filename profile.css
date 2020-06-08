@@ -1,0 +1,40 @@
+body {
+    /* top padding*/
+    background-color: #f5f5f5;
+}
+
+.center-content{
+
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image{
+ /* img kleiner
+    img centered*/
+}
+
+#image_upload
+{
+    display: none;
+}
+
+
+#profile_image
+{
+    cursor: pointer;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.jumbotron{
+    background: white;
+    padding: 2rem;
+}
+
+
+
+
+

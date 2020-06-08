@@ -1,15 +1,12 @@
 <?php
 session_start();
-if(!$_SESSION['sid']==session_id())
-{
-    header("location:/login.php");
-}
-
-else{
+if (!$_SESSION['sid'] == session_id()) {
+    header("location: login.php");
+} else {
     $username = $_SESSION['username'];
+    $image = $_SESSION['image'];
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -22,7 +19,10 @@ else{
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bare - Start Bootstrap Template</title>
+    <title>smaroo - Dashboard</title>
+
+    <link rel="icon" href="img/title_icon.png" type="image/icon type">
+
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -57,20 +57,14 @@ else{
 <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
 
     <a class="navbar-brand" href="#">SmaRoo</a>
-    <div class="text-">
 
-        <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
+    <!--button for sidebar on big screens; we first had a hide for smaller screens, but sidebar just dissapears with the button-->
+    <div class="text0">
         <button type="button" id="sidebarCollapse" class="navbar-toggler btn-info d-none d-md-block"
                 onclick="sidebarToggle()">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-
-    <!-- Logout / (evtl) Profile Button -->
-
-    <button type="submit" class="btn btn-secondary navbar-btn">
-        <a href="logout.php">Logout</a>
-    </button>
 
 
     <!--button for navbar on smaller screens-->
@@ -95,7 +89,8 @@ else{
                             src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('air')"><img src="https://img.icons8.com/ios/50/000000/dry.png">
+                <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('air')"><img
+                            src="https://img.icons8.com/ios/50/000000/dry.png">
                     Luftfeuchtigkeit</a>
             </li>
             <li class="nav-item" onclick="toggleSensorBoard();getBoard('light')">
@@ -106,9 +101,21 @@ else{
                 <a class="nav-link" href="#" onclick="toggleSensorMenu()"><img
                             src="https://img.icons8.com/ios/48/000000/electrical-sensor.png"/> Sensorcontrol</a>
             </li>
+
+            <li class="nav-item divider">
+                <hr>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="profile.php "><img
+                            src="https://img.icons8.com/wired/64/000000/admin-settings-male.png"> Profile </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php" "><img
+                        src="https://img.icons8.com/wired/64/000000/logout-rounded.png"> Logout </a>
+            </li>
         </ul>
     </div>
-
 </nav>
 
 <!-- Page Content uses flexboxes from bootstrap & the Gridsystem for responsiveness-->
@@ -117,13 +124,13 @@ else{
     <nav id="sidebar" class="d-none d-md-block">
         <div class="make-me-sticky">
             <div class="sidebar-header">
-                <img class="img-fluid rounded-circle" src="img/profile.jfif" alt="profilepic">
+                <a href="profile.php">
+                    <img class="img-fluid rounded-circle" <?php echo "src=$image" ?> alt="profilepic">
+                </a>
                 <?php
-                   echo"<h4> $username 's Smartroom</h4>"
+                echo "<h4> $username 's Smartroom</h4>"
                 ?>
-
             </div>
-
 
 
             <ul id="test" class="list-unstyled components">
@@ -143,12 +150,14 @@ else{
                                 src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
                 </li>
                 <li>
-                    <a href="#" onclick="toggleSensorBoard();getBoard('air')"><img src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
+                    <a href="#" onclick="toggleSensorBoard();getBoard('air')"><img
+                                src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
-                    <a href="#" onclick="toggleSensorBoard();getBoard('light')"><img src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
+                    <a href="#" onclick="toggleSensorBoard();getBoard('light')"><img
+                                src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
@@ -156,12 +165,19 @@ else{
                                 src="https://img.icons8.com/ios/48/000000/electrical-sensor.png"/> Sensorcontrol</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="profile.php "><img
+                                src="https://img.icons8.com/wired/64/000000/admin-settings-male.png"> Profile </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="logout.php" "><img
+                            src="https://img.icons8.com/wired/64/000000/logout-rounded.png"> Logout </a>
+                </li>
+
             </ul>
         </div>
     </nav>
-
-
-
 
 
     <!-- Page MAIN Content as flex item in FlexBox Wrapper-->
@@ -178,7 +194,8 @@ else{
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
                                 <h5 class="card-text">Temp</h5>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="toggleTemp" onclick="postSensorState('temperature')">
+                                    <input type="checkbox" class="custom-control-input" id="toggleTemp"
+                                           onclick="postSensorState('temperature')">
                                     <label class="custom-control-label" for="toggleTemp"></label>
                                 </div>
                             </div>
@@ -186,7 +203,8 @@ else{
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
                                 <h5 class="card-text">Boden</h5>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="toggleBoden" onclick="postSensorState('humidity')">
+                                    <input type="checkbox" class="custom-control-input" id="toggleBoden"
+                                           onclick="postSensorState('humidity')">
                                     <label class="custom-control-label" for="toggleBoden"></label>
                                 </div>
                             </div>
@@ -194,7 +212,8 @@ else{
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
                                 <h5 class="card-text">Luft</h5>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="toggleLuft" onclick="postSensorState('air')">
+                                    <input type="checkbox" class="custom-control-input" id="toggleLuft"
+                                           onclick="postSensorState('air')">
                                     <label class="custom-control-label" for="toggleLuft"></label>
                                 </div>
                             </div>
@@ -202,13 +221,15 @@ else{
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
                                 <h5 class="card-text">Licht</h5>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="toggleLicht" onclick="postSensorState('light')">
+                                    <input type="checkbox" class="custom-control-input" id="toggleLicht"
+                                           onclick="postSensorState('light')">
                                     <label class="custom-control-label" for="toggleLicht"></label>
                                 </div>
                             </div>
                             <hr/>
 
-                            <p>Schalter schieben um die Sensoren zu aktivieren/deaktivieren</p> <!--br only when its to small-->
+                            <p>Schalter schieben um die Sensoren zu aktivieren/deaktivieren</p>
+                            <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
@@ -219,9 +240,9 @@ else{
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Temperatur</h2>
-                            <p class="text-dark" >Joy-it SEN-DHT22 Temperatur-Sensor</p>
-                            <p class="text-dark" >Messbereich: -40 bis 80 Grad Celsius</p>
-                            <p class="text-dark" >Luftfeuchtigkeit: 0 bis 100 Prozent</p>
+                            <p class="text-dark">Joy-it SEN-DHT22 Temperatur-Sensor</p>
+                            <p class="text-dark">Messbereich: -40 bis 80 Grad Celsius</p>
+                            <p class="text-dark">Luftfeuchtigkeit: 0 bis 100 Prozent</p>
                             <hr/>
                             <div>
                                 <h5><a href="#" class="text-info">REST</a></h5>
@@ -235,8 +256,9 @@ else{
                     <div class="card text-center h-100">
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
-                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Bodenfeuchtigkeit</h2>
-                            <p class="text-dark" >MAKERFACTORY MF-4838244 Sensor</p>
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">
+                                Bodenfeuchtigkeit</h2>
+                            <p class="text-dark">MAKERFACTORY MF-4838244 Sensor</p>
                             <hr/>
                             <div>
                                 <h5><a href="#" class="text-info">REST</a></h5>
@@ -250,9 +272,9 @@ else{
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Luftfeuchtigkeit</h2>
-                            <p class="text-dark" >Joy-it SEN-DHT22 Temperatur-Sensor</p>
-                            <p class="text-dark" >Messbereich: -40 bis 80 Grad Celsius</p>
-                            <p class="text-dark" >Luftfeuchtigkeit: 0 bis 100 Prozent</p>
+                            <p class="text-dark">Joy-it SEN-DHT22 Temperatur-Sensor</p>
+                            <p class="text-dark">Messbereich: -40 bis 80 Grad Celsius</p>
+                            <p class="text-dark">Luftfeuchtigkeit: 0 bis 100 Prozent</p>
                             <hr/>
                             <div>
                                 <h5><a href="#" class="text-info">REST</a></h5>
@@ -266,9 +288,9 @@ else{
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Lichtsensor</h2>
-                            <p class="text-dark" >OSRAM Fotodiode DIL 1100 nm 60 °</p>
-                            <p class="text-dark" >Wellenlänge min.: 400 nm</p>
-                            <p class="text-dark" >Wellenlänge max.: 1100 nm</p>
+                            <p class="text-dark">OSRAM Fotodiode DIL 1100 nm 60 °</p>
+                            <p class="text-dark">Wellenlänge min.: 400 nm</p>
+                            <p class="text-dark">Wellenlänge max.: 1100 nm</p>
                             <hr/>
                             <div>
                                 <h5><a href="#" class="text-info">REST</a></h5>
@@ -290,15 +312,12 @@ else{
         </div>
 
 
+        <!--
+        Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
+        -->
 
 
-<!--
-Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
--->
-
-
-
-        <div id="sensorCards"><!--for Sensors/Dashboard Cardboard-->
+        <div id="sensorCards" style="padding-top: 10px;"><!--for Sensors/Dashboard Cardboard-->
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
@@ -307,7 +326,9 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                             <h2 style="display: inline" id="liveMeasureValue" class="card-text">value</h2>
                             <h2 style="display: inline" class="card-text unit">units</h2>
                             <hr/>
-                            <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">measure</button>
+                            <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">
+                                measure
+                            </button>
                             <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
                         </div>
                     </div>
@@ -390,7 +411,9 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                             <input style="display: inline" type="date" id="calEnd" name="calendarEnd">
                             <hr/>
                             <!--<img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">-->
-                            <button type="button" class="btn btn-outline-dark" onclick="getDatePickerDataAndCreateChart()">anzeigen</button>
+                            <button type="button" class="btn btn-outline-dark"
+                                    onclick="getDatePickerDataAndCreateChart()">anzeigen
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -400,7 +423,6 @@ Hier startet nun das Card Board für die normalen Sensoren oder das Dahsboard
                             <h5 class="card-title p-3 mb-2 bg-light text-dark rounded" id="timespan">-noch kein Zeitintervall gewählt-</h5>
                             <!--Konstruktion gegen doppelte Canvas-->
                             <div id="divOverChart"><canvas id="myChart"></canvas></div>
-
                             <button type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>

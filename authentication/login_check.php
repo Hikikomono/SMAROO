@@ -1,4 +1,5 @@
 <?php
+session_start();
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
@@ -21,13 +22,19 @@ try {
 
 
 // compare hashed value from db (con. to email) and entered hashed pw
-
-//https://www.php.net/manual/de/function.password-verify.php
     if ($password == $row['password'] && $email == $row['email']) {
         session_start();
         $_SESSION['sid'] = session_id();
         $_SESSION['username'] = $row['username'];
         $_SESSION['email'] = $row['email'];
+
+        if ($row['image'] != null) {
+            $_SESSION['image'] = $row['image'];
+            echo $_SESSION['image'];
+        }
+        else{
+            $_SESSION['image'] = "img/default_image.png";
+        }
 
 
         $pdo = null;
@@ -39,15 +46,13 @@ try {
         $pdo = null;
         $stmt = null;
         header("Location: ../login.php");
-        //header("HTTP/1.0 401 Unauthorized Error ");
-
+        header("HTTP/1.0 401 Unauthorized Error ");
         exit;
     }
 
 
 }catch (PDOException $e){
-    echo "Error while connection to DB! \n";
-    echo $e->getMessage();
+    echo "Error while connection to DB!  $e->getMessage();";
     die();
 }
 ?>
