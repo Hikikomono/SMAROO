@@ -192,7 +192,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <h2 class="card-title p-3 mb-2 bg-light text-dark rounded">Sensor State</h2>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Temp</h5>
+                                <h5 class="card-text">Temperature</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleTemp"
                                            onclick="postSensorState('temperature')">
@@ -201,7 +201,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Boden</h5>
+                                <h5 class="card-text">Soil Moisture</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleBoden"
                                            onclick="postSensorState('humidity')">
@@ -210,7 +210,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Luft</h5>
+                                <h5 class="card-text">Humidity</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLuft"
                                            onclick="postSensorState('air')">
@@ -219,7 +219,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Licht</h5>
+                                <h5 class="card-text">Light</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLicht"
                                            onclick="postSensorState('light')">
