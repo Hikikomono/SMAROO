@@ -50,9 +50,9 @@ $image = $_SESSION['image'];
             <form class="form-horizontal" action="authentication/profileChanges_check.php" method="post" enctype="multipart/form-data">
 
                 <!-- User Image -->
-                <div class="text-center">
-                <img class="rounded-circle" id="profile_image"
-                    <?php echo "src=$image" ?> alt="profile image" style="max-width: 300px; max-height: 300px; padding: 20px;">
+                <div class="text-center " style="margin-top: 15px;">
+                <img class="rounded-circle shadow-lg p-3 mb-3" id="profile_image"
+                    <?php echo "src=$image" ?> alt="profile image" ">
                 </div>
                 <input type="file" id="image_upload" name="image" >
 
