@@ -246,7 +246,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <hr/>
                             <div>
                                 <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datasheet</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/002159178DS01/datenblatt-2159178-joy-it-sen-dht22-temperatur-sensor-1-st-passend-fuer-arduino-asus-asus-tinker-board-banana-pi-beagleboard-raspber.pdf" class="text-info">Datasheet</a></h5>
                                 <!--<h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>-->
                             </div>
                         </div>
@@ -262,7 +262,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <hr/>
                             <div>
                                 <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datasheet</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/001612748ML01/bedienungsanleitung-1612748-makerfactory-mf-4838244-sensor.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
@@ -278,7 +278,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <hr/>
                             <div>
                                 <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datasheet</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/002159178DS01/datenblatt-2159178-joy-it-sen-dht22-temperatur-sensor-1-st-passend-fuer-arduino-asus-asus-tinker-board-banana-pi-beagleboard-raspber.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
@@ -294,7 +294,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <hr/>
                             <div>
                                 <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datasheet</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/gl/000153005DS01/datenblatt-153005-osram-fotodiode-dil-1100-nm-60-bpw-34.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
