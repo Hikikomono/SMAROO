@@ -22,6 +22,7 @@ $image = $_SESSION['image'];
     <link rel="icon" href="img/title_icon.png" type="image/icon type">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="functions.js"></script>
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -52,9 +53,9 @@ $image = $_SESSION['image'];
                 <!-- User Image -->
                 <div class="text-center ">
                 <img class="rounded-circle shadow-lg p-3 mb-3" id="profile_image"
-                    <?php echo "src=$image" ?> alt="profile image" ">
+                    <?php echo "src=$image" ?> alt="profile image" onclick="imgClick()">
                 </div>
-                <input type="file" id="image_upload" name="image" >
+                <input type="file" id="image_upload" name="image" onchange="preview_image(event)" >
 
                 <!-- User info -->
                 <div class="jumbotron">
@@ -99,8 +100,3 @@ $image = $_SESSION['image'];
 </body>
 </html>
 
-<script>
-    $("#profile_image").click(function (e) {
-        $("#image_upload").click();
-    });
-</script>

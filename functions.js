@@ -260,3 +260,19 @@ $('#timespan').text(fromDate +" to " +toDate);
    }); //ende request
 
 }
+
+//Functions for Profile
+function imgClick() {
+    $("#image_upload").click();
+}
+
+function preview_image(event)
+{
+    var reader = new FileReader();
+    reader.onload = function()
+    {
+        var output = document.getElementById('profile_image');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}

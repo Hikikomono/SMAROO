@@ -28,18 +28,19 @@ else {
             $stmt->bindParam(3, $password);
             $stmt->bindParam(4, $salt);
 
-            $stmt->execute();
-
-
-            $pdo = null;
-            $stmt = null;
-
         } catch (Exception $e) {
-            echo "Exception caught: \n" . $e->getMessage();
+            echo "Exception: " . $e->getMessage();
         }
 
-        header("Location: ../login.php");
-
+        if($stmt->execute()){
+            $pdo = null;
+            $stmt = null;
+            header("Location: ../login.php");
+        }else{
+            $pdo = null;
+            $stmt = null;
+            header("Location: ../register.php");
+        }
     } catch (PDOException $e) {
         echo "Error while connecting to Database: $e->getMessage()";
         die();
