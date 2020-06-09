@@ -166,21 +166,22 @@ function getLiveData(){
         var obj = data.data;
 
         //"exception handling" if no data is in the db
-        if (obj != null) {
-            var parsedNum = parseFloat(obj).toFixed(2);
-            $("#liveMeasureValue").text(parsedNum);
-            failSafer = 0;
-
-        } else if (obj == 666 && failSafer <= 10){
+        if (obj == 666 && failSafer <= 10){
             failSafer++;
             $("#liveMeasureValue").text("failure - trying again...");
             getLiveData();
+        
+
+        } else if (obj != null) {
+            var parsedNum = parseFloat(obj).toFixed(2);
+            $("#liveMeasureValue").text(parsedNum);
+            failSafer = 0;
 
         }else {
             $("#liveMeasureValue").text("failure - no connection");
 
         }
-        
+
 
 
     });
