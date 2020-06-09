@@ -330,7 +330,7 @@ if (!$_SESSION['sid'] == session_id()) {
                                 measure
                             </button>
                             <p>last measurement:</p>
-                            <p> id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
+                            <p id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
