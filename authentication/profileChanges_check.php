@@ -1,6 +1,6 @@
 <?php
 session_start();
-$username_session = trim$_SESSION['username'];
+$username_session = $_SESSION['username'];
 $email_session = $_SESSION['email'];
 
 //https://stackoverflow.com/questions/5597148/change-some-user-settings-but-not-all-from-a-single-form-php-mysql
