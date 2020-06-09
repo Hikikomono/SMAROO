@@ -1,9 +1,12 @@
 <?php
 session_start();
-$username_session = $_SESSION['username'];
+$username_session = trim$_SESSION['username'];
 $email_session = $_SESSION['email'];
 
 //https://stackoverflow.com/questions/5597148/change-some-user-settings-but-not-all-from-a-single-form-php-mysql
+//TODO tracken welche Eigenschaften nicht erfolgreich / erfolgreich updated wurden
+//TODO trim & sanitize ALL inputs
+
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
