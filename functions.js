@@ -1,5 +1,6 @@
 //this var is needed so the LiveData query knows in which cardBoard we are in right now (temp, hum, light...)
 var actualcards = null;
+var failSafer = 0;
 
 // create date that is applicable with sql
 function getDate() {
@@ -163,14 +164,23 @@ function getLiveData(){
     $.get(request).done(function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
 
         var obj = data.data;
+
         //"exception handling" if no data is in the db
         if (obj != null) {
             var parsedNum = parseFloat(obj).toFixed(2);
             $("#liveMeasureValue").text(parsedNum);
+            failSafer = 0;
 
-        } else {
-            $("#liveMeasureValue").text("-failure-");
+        } else if (obj == 666 && failSafer <= 10){
+            failSafer++;
+            $("#liveMeasureValue").text("failure - trying again...");
+            getLiveData();
+
+        }else {
+            $("#liveMeasureValue").text("failure - no connection");
+
         }
+        
 
 
     });
