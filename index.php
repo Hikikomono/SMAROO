@@ -245,7 +245,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <p class="text-dark">Humidity: 0 to 100 Percent</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
                                 <h5><a href="#" class="text-info">Datasheet</a></h5>
                                 <!--<h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>-->
                             </div>
@@ -261,7 +261,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <p class="text-dark">MAKERFACTORY MF-4838244 Sensor</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
                                 <h5><a href="#" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
@@ -277,7 +277,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <p class="text-dark">Humidity: 0 to 100 Prozent</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
                                 <h5><a href="#" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
@@ -293,7 +293,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <p class="text-dark">Wavelength max.: 1100 nm</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
                                 <h5><a href="#" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
@@ -329,7 +329,8 @@ if (!$_SESSION['sid'] == session_id()) {
                             <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">
                                 measure
                             </button>
-                            <p>last measurement:</p><br> <p id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
+                            <p>last measurement:</p>
+                            <p id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
