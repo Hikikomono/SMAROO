@@ -1,7 +1,7 @@
 <?php
 session_start();
 $username_session = $_SESSION['username'];
-$email_session = $_SESSION['email'];
+$email = $_SESSION['email'];
 
 //https://stackoverflow.com/questions/5597148/change-some-user-settings-but-not-all-from-a-single-form-php-mysql
 //TODO tracken welche Eigenschaften nicht erfolgreich / erfolgreich updated wurden
@@ -34,7 +34,7 @@ try {
                                             SET image = ?
                                             WHERE email = ?");
             $stmt->bindParam(1, $image_base64);
-            $stmt->bindParam(2, $email_session);
+            $stmt->bindParam(2, $email);
 
             if ($stmt->execute()) {
                 // Set new image session var
@@ -50,7 +50,7 @@ try {
         $stmt = $pdo->prepare("SELECT password, salt 
                                     FROM users 
                                     WHERE email = ?");
-        $stmt->execute(array($email_session));
+        $stmt->execute(array($email));
 
         $row = $stmt->fetch();
         $salt = $row['salt'];
@@ -76,7 +76,7 @@ try {
                                         WHERE email = ?");
             $stmt->bindParam(1, $password_new);
             $stmt->bindParam(2, $salt);
-            $stmt->bindParam(3, $email_session);
+            $stmt->bindParam(3, $email);
 
             $stmt->execute();
 
@@ -91,7 +91,7 @@ try {
                        WHERE email = ?");
 
         $stmt->bindParam(1, $_POST['username']);
-        $stmt->bindParam(2, $email_session);
+        $stmt->bindParam(2, $email);
 
         if ($stmt->execute()) {
             $_SESSION['username'] = $_POST['username'];
@@ -99,6 +99,8 @@ try {
     }
 
 //Update Email
+
+
     if (isset($_POST['email']) && !empty($_POST['email'])) {
         //$stmt = null;
         $stmt = $pdo->prepare(
@@ -107,15 +109,15 @@ try {
                     WHERE email = ?");
 
         $stmt->bindParam(1, $_POST['email']);
-        $stmt->bindParam(2, $email_session);
+        $stmt->bindParam(2, $email);
 
         if ($stmt->execute()) {
             $_SESSION['email'] = $_POST['email'];
         }
 
-    } else {
-        //error dass keine variablen gesetzt sind => redirect profile.php
     }
+    $pdo = null;
+    $stmt = null;
 
 //redirect to profile.php
     header("Location: ../profile.php");
