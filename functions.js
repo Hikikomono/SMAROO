@@ -165,12 +165,12 @@ function getLiveData(){
 
         var obj = data.data;
 
-        //"exception handling" if no data is in the db
+        //"exception handling" if no connection (null) or a hardware failure (returns 666)
         if (obj == 666 && failSafer <= 10){
             failSafer++;
-            $("#liveMeasureValue").text("failure - trying again...");
+            $("#liveMeasureValue").text("fail - trying again...");
             getLiveData();
-        
+
 
         } else if (obj != null) {
             var parsedNum = parseFloat(obj).toFixed(2);
