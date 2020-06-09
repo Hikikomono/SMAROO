@@ -3,19 +3,24 @@ session_start();
 $email = htmlspecialchars(trim($_POST['email_input']));
 $password = htmlspecialchars(trim($_POST['password_input']));
 
-    try {
-        $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
-        $email = htmlspecialchars(trim($_POST['email_input']));
-        $password = htmlspecialchars(trim($_POST['password_input']));
+    $email = htmlspecialchars(trim($_POST['email_input']));
+    $password = htmlspecialchars(trim($_POST['password_input']));
+
+    //
 
 
 // retreive SALT and hashed PW of "email" (DB)
-        $stmt = $pdo->prepare("SELECT *  FROM users WHERE email = (?)");
-        $stmt->execute(array($email));
+    $stmt = $pdo->prepare("SELECT *  FROM users WHERE email = (?)");
+    $stmt->execute(array($email));
 
+    if ($stmt->rowCount() == 0) {
+        header("Location: ../login.php");
+
+    } else {
         $row = $stmt->fetch();
-
 
 // append SALT to password and HASH (sha256) it
         $salt = $row['salt'];
@@ -49,11 +54,12 @@ $password = htmlspecialchars(trim($_POST['password_input']));
             header("HTTP/1.0 401 Unauthorized Error ");
             exit;
         }
-
-
-    } catch (PDOException $e) {
-        echo "Error while connection to DB!  $e->getMessage();";
-        die();
     }
+
+} catch (PDOException $e) {
+    echo "Error while connection to DB!  $e->getMessage();";
+    //die();
+
+}
 
 ?>
