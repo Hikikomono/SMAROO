@@ -160,7 +160,8 @@ function getLiveData(){
 
     var request = "http://213.47.71.242:50000/rq/" + actualcards + "/live";
 
-    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+    $.get(request).done(function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+
         var obj = data.data;
         //"exception handling" if no data is in the db
         if (obj != null) {
@@ -173,6 +174,23 @@ function getLiveData(){
 
 
     });
+
+   /* $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+        if(actualcards=="temperature" || actualcards=="air"){
+
+        }
+        var obj = data.data;
+        //"exception handling" if no data is in the db
+        if (obj != null) {
+            var parsedNum = parseFloat(obj).toFixed(2);
+            $("#liveMeasureValue").text(parsedNum);
+
+        } else {
+            $("#liveMeasureValue").text("-failure-");
+        }
+
+
+    });*/
 
     //setting a timestamp so we know when the last measurement was
     var dt = new Date();
