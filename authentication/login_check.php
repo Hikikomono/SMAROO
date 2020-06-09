@@ -6,12 +6,6 @@ $password = htmlspecialchars(trim($_POST['password_input']));
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
 
-    $email = htmlspecialchars(trim($_POST['email_input']));
-    $password = htmlspecialchars(trim($_POST['password_input']));
-
-    //
-
-
 // retreive SALT and hashed PW of "email" (DB)
     $stmt = $pdo->prepare("SELECT *  FROM users WHERE email = (?)");
     $stmt->execute(array($email));
@@ -29,8 +23,7 @@ try {
 
 
 // compare hashed value from db (con. to email) and entered hashed pw
-        if ($password == $row['password'] && $email == $row['email']) {
-            session_start();
+        if ($password == $row['password']) {
             $_SESSION['sid'] = session_id();
             $_SESSION['username'] = $row['username'];
             $_SESSION['email'] = $row['email'];
@@ -41,7 +34,6 @@ try {
                 $_SESSION['image'] = "img/default_image.png";
             }
 
-
             $pdo = null;
             $stmt = null;
 
@@ -50,16 +42,13 @@ try {
         } else {
             $pdo = null;
             $stmt = null;
+            session_destroy();
             header("Location: ../login.php");
-            header("HTTP/1.0 401 Unauthorized Error ");
-            exit;
         }
     }
 
 } catch (PDOException $e) {
     echo "Error while connection to DB!  $e->getMessage();";
-    //die();
-
 }
 
 ?>
