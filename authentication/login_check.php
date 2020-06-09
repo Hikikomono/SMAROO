@@ -15,6 +15,9 @@ try {
 
     } else {
         $row = $stmt->fetch();
+        if ($row['authorized'] == 0){
+            header("Location: ../login.php");
+        }
 
 // append SALT to password and HASH (sha256) it
         $salt = $row['salt'];

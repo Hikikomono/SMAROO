@@ -44,18 +44,7 @@ else {
     } catch (PDOException $e) {
         echo "Error while connecting to Database: $e->getMessage()";
         die();
-    } /*
-
-//TODO PW Länge, PW match direkt in form lösen
-
-if($data['password_input'] !== $data['password_confirm']){
-    die("Passwords don't match!");
-}
-
-echo $salt . "\n";
-echo "email: " . $email . " pwd: " . $password;
-//
-*/
+    }
 }
 ?>
 
