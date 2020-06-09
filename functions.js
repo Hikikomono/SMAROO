@@ -174,6 +174,11 @@ function getLiveData(){
 
     });
 
+    //setting a timestamp so we know when the last measurement was
+    var dt = new Date();
+    var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+    $("#liveTimeStamp").text(time);
+
 
 }
 
@@ -225,7 +230,6 @@ $('#timespan').text(fromDate +" to " +toDate);
 
 
 //TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
-    //TODO das Chart muss clean werden wenn man switcht!
     var request = "getTimeSpan.php?From=" + fromDate + "&To=" + toDate +"&Sensortyp=" +actualcards;
    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
        var obj = JSON.parse(data);

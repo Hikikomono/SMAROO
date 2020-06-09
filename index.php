@@ -329,7 +329,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">
                                 measure
                             </button>
-                            <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
+                            <p>last measurement:</p><br> <p id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
