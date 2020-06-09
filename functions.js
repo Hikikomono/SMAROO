@@ -1,5 +1,6 @@
 //this var is needed so the LiveData query knows in which cardBoard we are in right now (temp, hum, light...)
 var actualcards = null;
+var failSafer = 0;
 
 // create date that is applicable with sql
 function getDate() {
@@ -160,7 +161,35 @@ function getLiveData(){
 
     var request = "http://213.47.71.242:50000/rq/" + actualcards + "/live";
 
-    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+    $.get(request).done(function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+
+        var obj = data.data;
+
+        //"exception handling" if no connection (null) or a hardware failure (returns 666)
+        if (obj == 666 && failSafer <= 10){
+            failSafer++;
+            $("#liveMeasureValue").text("fail - trying again...");
+            getLiveData();
+
+
+        } else if (obj != null) {
+            var parsedNum = parseFloat(obj).toFixed(2);
+            $("#liveMeasureValue").text(parsedNum);
+            failSafer = 0;
+
+        }else {
+            $("#liveMeasureValue").text("failure - no connection");
+
+        }
+
+
+
+    });
+
+   /* $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+        if(actualcards=="temperature" || actualcards=="air"){
+
+        }
         var obj = data.data;
         //"exception handling" if no data is in the db
         if (obj != null) {
@@ -172,7 +201,7 @@ function getLiveData(){
         }
 
 
-    });
+    });*/
 
     //setting a timestamp so we know when the last measurement was
     var dt = new Date();
