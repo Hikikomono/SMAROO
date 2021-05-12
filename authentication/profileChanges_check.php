@@ -1,9 +1,14 @@
 <?php
 session_start();
 $username_session = $_SESSION['username'];
-$email_session = $_SESSION['email'];
+$email = $_SESSION['email'];
 
 //https://stackoverflow.com/questions/5597148/change-some-user-settings-but-not-all-from-a-single-form-php-mysql
+//TODO tracken welche Eigenschaften nicht erfolgreich / erfolgreich updated wurden
+$password_verify = htmlspecialchars(trim($_POST['password_old']));
+$password_new = htmlspecialchars(trim($_POST['password_new']));
+$username = htmlspecialchars(trim($_POST['username']));
+$email_new = htmlspecialchars(trim($_POST['email']));
 
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=smaroo_db", "smaroo", "smaroo");
@@ -31,7 +36,7 @@ try {
                                             SET image = ?
                                             WHERE email = ?");
             $stmt->bindParam(1, $image_base64);
-            $stmt->bindParam(2, $email_session);
+            $stmt->bindParam(2, $email);
 
             if ($stmt->execute()) {
                 // Set new image session var
@@ -42,17 +47,16 @@ try {
     }
 
 //Update Password
-    if (isset($_POST['password_old']) && !empty($_POST['password_old']) && isset($_POST['password_new']) && !empty($_POST['password_new'])) {
+    if (isset($password_verify) && !empty($password_verify) && isset($password_new) && !empty($password_new)) {
         //check if entered pw is valid
         $stmt = $pdo->prepare("SELECT password, salt 
                                     FROM users 
                                     WHERE email = ?");
-        $stmt->execute(array($email_session));
+        $stmt->execute(array($email));
 
         $row = $stmt->fetch();
         $salt = $row['salt'];
         $password_current = $row['password'];
-        $password_verify = $_POST['password_old'];
 
 
 // append SALT to password and HASH (sha256) it
@@ -63,7 +67,6 @@ try {
         if ($password_verify == $password_current) {
             //create new salt & append it to new pw & hash result
             $salt = bin2hex(random_bytes(64));
-            $password_new = $_POST['password_new'];
             $password_new .= $salt;
             $password_new = hash("sha256", $password_new);
 
@@ -73,7 +76,7 @@ try {
                                         WHERE email = ?");
             $stmt->bindParam(1, $password_new);
             $stmt->bindParam(2, $salt);
-            $stmt->bindParam(3, $email_session);
+            $stmt->bindParam(3, $email);
 
             $stmt->execute();
 
@@ -81,38 +84,40 @@ try {
     }
 
 //Update Username
-    if (isset($_POST['username']) && !empty($_POST['username'])) {
+    if (isset($username) && !empty($username)) {
         $stmt = $pdo->prepare(
             "UPDATE users
                        SET username = ?
                        WHERE email = ?");
 
-        $stmt->bindParam(1, $_POST['username']);
-        $stmt->bindParam(2, $email_session);
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $email);
 
         if ($stmt->execute()) {
-            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['username'] = $username;
         }
     }
 
 //Update Email
-    if (isset($_POST['email']) && !empty($_POST['email'])) {
+
+
+    if (isset($email_new) && !empty($email_new)) {
         //$stmt = null;
         $stmt = $pdo->prepare(
             "UPDATE users
                     SET email = ?
                     WHERE email = ?");
 
-        $stmt->bindParam(1, $_POST['email']);
-        $stmt->bindParam(2, $email_session);
+        $stmt->bindParam(1, $email_new);
+        $stmt->bindParam(2, $email);
 
         if ($stmt->execute()) {
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['email'] = $email_new;
         }
 
-    } else {
-        //error dass keine variablen gesetzt sind => redirect profile.php
     }
+    $pdo = null;
+    $stmt = null;
 
 //redirect to profile.php
     header("Location: ../profile.php");

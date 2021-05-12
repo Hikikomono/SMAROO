@@ -82,20 +82,20 @@ if (!$_SESSION['sid'] == session_id()) {
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('temperature')"><img
-                            src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
+                            src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperature </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('humidity')"><img
-                            src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
+                            src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Soil Moisture</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="toggleSensorBoard();getBoard('air')"><img
                             src="https://img.icons8.com/ios/50/000000/dry.png">
-                    Luftfeuchtigkeit</a>
+                    Humidity </a>
             </li>
             <li class="nav-item" onclick="toggleSensorBoard();getBoard('light')">
                 <a class="nav-link" href="#"><img src="https://img.icons8.com/ios/50/000000/light-on.png">
-                    Lichtsensor</a>
+                    Lightsensor</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="toggleSensorMenu()"><img
@@ -142,22 +142,22 @@ if (!$_SESSION['sid'] == session_id()) {
                 </li>
                 <li>
                     <a href="#" onclick="toggleSensorBoard();getBoard('temperature')"><img
-                                src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperatur</a>
+                                src="https://img.icons8.com/ios/50/000000/thermometer.png"> Temperature </a>
                     <!--TODO die abstände durch css austauschen-->
                 </li>
                 <li>
                     <a href="#" onclick="toggleSensorBoard();getBoard('humidity')"><img
-                                src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Bodenfeuchtigkeit</a>
+                                src="https://img.icons8.com/ios/50/000000/hygrometer.png"> Soil Moisture </a>
                 </li>
                 <li>
                     <a href="#" onclick="toggleSensorBoard();getBoard('air')"><img
-                                src="https://img.icons8.com/ios/50/000000/dry.png"> Luftfeuchtigkeit</a>
+                                src="https://img.icons8.com/ios/50/000000/dry.png"> Humidity </a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
 
                     <a href="#" onclick="toggleSensorBoard();getBoard('light')"><img
-                                src="https://img.icons8.com/ios/50/000000/light-on.png"> Lichtsensor</a>
+                                src="https://img.icons8.com/ios/50/000000/light-on.png"> Light Sensor</a>
                     <!--TODO Ajax & Jquery hier onclick changes data in cards-->
                 </li>
                 <li>
@@ -189,10 +189,10 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h2 class="card-title p-3 mb-2 bg-light text-dark rounded">Sensorstatus</h2>
+                            <h2 class="card-title p-3 mb-2 bg-light text-dark rounded">Sensor State</h2>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Temp</h5>
+                                <h5 class="card-text">Temperature</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleTemp"
                                            onclick="postSensorState('temperature')">
@@ -201,7 +201,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Boden</h5>
+                                <h5 class="card-text">Soil Moisture</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleBoden"
                                            onclick="postSensorState('humidity')">
@@ -210,7 +210,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Luft</h5>
+                                <h5 class="card-text">Humidity</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLuft"
                                            onclick="postSensorState('air')">
@@ -219,7 +219,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <div style="display: flex; justify-content: space-between">
                                 <!--using flexbox here to get the toggle button aligned to the other side-->
-                                <h5 class="card-text">Licht</h5>
+                                <h5 class="card-text">Light</h5>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="toggleLicht"
                                            onclick="postSensorState('light')">
@@ -228,7 +228,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             </div>
                             <hr/>
 
-                            <p>Schalter schieben um die Sensoren zu aktivieren/deaktivieren</p>
+                            <p>Toggle to activate / deactivate sensors</p>
                             <!--br only when its to small-->
                         </div>
                     </div>
@@ -239,14 +239,14 @@ if (!$_SESSION['sid'] == session_id()) {
                     <div class="card text-center h-100">
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
-                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Temperatur</h2>
-                            <p class="text-dark">Joy-it SEN-DHT22 Temperatur-Sensor</p>
-                            <p class="text-dark">Messbereich: -40 bis 80 Grad Celsius</p>
-                            <p class="text-dark">Luftfeuchtigkeit: 0 bis 100 Prozent</p>
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Temperature</h2>
+                            <p class="text-dark">Joy-it SEN-DHT22 Temperature-Sensor</p>
+                            <p class="text-dark">Measuring Range: -40 to 80 Grad Celsius</p>
+                            <p class="text-dark">Humidity: 0 to 100 Percent</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/002159178DS01/datenblatt-2159178-joy-it-sen-dht22-temperatur-sensor-1-st-passend-fuer-arduino-asus-asus-tinker-board-banana-pi-beagleboard-raspber.pdf" class="text-info">Datasheet</a></h5>
                                 <!--<h5 style="display: inline" class="text-muted card-text unit">REST Dokumentation</h5>-->
                             </div>
                         </div>
@@ -257,12 +257,12 @@ if (!$_SESSION['sid'] == session_id()) {
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
                             <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">
-                                Bodenfeuchtigkeit</h2>
+                                Soil Moisture</h2>
                             <p class="text-dark">MAKERFACTORY MF-4838244 Sensor</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/001612748ML01/bedienungsanleitung-1612748-makerfactory-mf-4838244-sensor.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
@@ -271,14 +271,14 @@ if (!$_SESSION['sid'] == session_id()) {
                     <div class="card text-center h-100">
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
-                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Luftfeuchtigkeit</h2>
-                            <p class="text-dark">Joy-it SEN-DHT22 Temperatur-Sensor</p>
-                            <p class="text-dark">Messbereich: -40 bis 80 Grad Celsius</p>
-                            <p class="text-dark">Luftfeuchtigkeit: 0 bis 100 Prozent</p>
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Humidity</h2>
+                            <p class="text-dark">Joy-it SEN-DHT22 Temperature-Sensor</p>
+                            <p class="text-dark">Measuring Range: -40 to 80 Grad Celsius</p>
+                            <p class="text-dark">Humidity: 0 to 100 Prozent</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/en/002159178DS01/datenblatt-2159178-joy-it-sen-dht22-temperatur-sensor-1-st-passend-fuer-arduino-asus-asus-tinker-board-banana-pi-beagleboard-raspber.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
@@ -287,14 +287,14 @@ if (!$_SESSION['sid'] == session_id()) {
                     <div class="card text-center h-100">
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
-                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Lichtsensor</h2>
+                            <h2 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Light Sensor</h2>
                             <p class="text-dark">OSRAM Fotodiode DIL 1100 nm 60 °</p>
-                            <p class="text-dark">Wellenlänge min.: 400 nm</p>
-                            <p class="text-dark">Wellenlänge max.: 1100 nm</p>
+                            <p class="text-dark">Wavelength min.: 400 nm</p>
+                            <p class="text-dark">Wavelength max.: 1100 nm</p>
                             <hr/>
                             <div>
-                                <h5><a href="#" class="text-info">REST</a></h5>
-                                <h5><a href="#" class="text-info">Datenblatt</a></h5>
+                                <h5><a href="https://drive.google.com/file/d/1HLBSSBW_T3NsfRGHePxoXn5If4eoPVxL/view?usp=sharing" class="text-info">REST</a></h5>
+                                <h5><a href="https://asset.conrad.com/media10/add/160267/c1/-/gl/000153005DS01/datenblatt-153005-osram-fotodiode-dil-1100-nm-60-bpw-34.pdf" class="text-info">Datasheet</a></h5>
                             </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Statistik zu Laufzeit</h5>
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Runtime Statistics</h5>
                             <img class="card-img-top" src="img/diagram.jpg" alt="a diagram">
                             <button id="liveMeasure" type="button" class="btn btn-outline-dark">export</button>
                         </div>
@@ -322,14 +322,15 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Daten</h5>
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">Live Data</h5>
                             <h2 style="display: inline" id="liveMeasureValue" class="card-text">value</h2>
                             <h2 style="display: inline" class="card-text unit">units</h2>
                             <hr/>
                             <button id="liveMeasure" type="button" class="btn btn-outline-dark" onclick="getLiveData()">
                                 measure
                             </button>
-                            <p>last measurement:<br> 5 seconds ago</p> <!--br only when its to small-->
+                            <p>last measurement:</p>
+                            <p id="liveTimeStamp">no measurement yet</p> <!--br only when its to small-->
                         </div>
                     </div>
                 </div>
@@ -337,7 +338,7 @@ if (!$_SESSION['sid'] == session_id()) {
                     <div class="card text-center h-100">
                         <!--added h-100 for 100% size of all cards - even if not enough text-->
                         <div class="card-body">
-                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Monat</h5>
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">current Month</h5>
                             <h2 style="display: inline">Ø: </h2>
                             <h2 style="display: inline" id="monthValue" class="card-text">value</h2>
                             <h2 style="display: inline" class="card-text unit">units</h2>
@@ -359,7 +360,7 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktuelle Woche</h5>
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">current Week</h5>
                             <h2 style="display: inline">Ø: </h2>
                             <h2 style="display: inline" id="weekValue" class="card-text">value</h2>
                             <h2 style="display: inline" class="card-text unit">units</h2>
@@ -381,7 +382,7 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">aktueller Tag</h5>
+                            <h5 class="card-title text-center p-3 mb-2 bg-light text-dark rounded">current Day</h5>
                             <h2 style="display: inline">Ø: </h2>
                             <h2 style="display: inline" id="dayValue" class="card-text">value</h2>
                             <h2 style="display: inline" class="card-text unit">units</h2>
@@ -403,7 +404,7 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Zeitintervall</h5>
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded">Time Interval</h5>
 
                             <input style="display: inline" type="date" id="calStart" name="calendarStart">
 
@@ -412,7 +413,7 @@ if (!$_SESSION['sid'] == session_id()) {
                             <hr/>
                             <!--<img class="card-img-top" src="img/Printable-April-2020-Calendar.jpg" alt="a diagram">-->
                             <button type="button" class="btn btn-outline-dark"
-                                    onclick="getDatePickerDataAndCreateChart()">anzeigen
+                                    onclick="getDatePickerDataAndCreateChart()">show
                             </button>
                         </div>
                     </div>
@@ -420,9 +421,9 @@ if (!$_SESSION['sid'] == session_id()) {
                 <div class="col-sm-6 col-md-4 col-lg-4 p-0">  <!-- text-center -->
                     <div class="card text-center h-100">
                         <div class="card-body">
-                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded" id="timespan">-noch kein
-                                Zeitintervall gewählt-</h5>
-                            <canvas id="myChart"></canvas>
+                            <h5 class="card-title p-3 mb-2 bg-light text-dark rounded" id="timespan">-no time interval chosen yet-</h5>
+                            <!--Konstruktion gegen doppelte Canvas-->
+                            <div id="divOverChart"><canvas id="myChart"></canvas></div>
                             <button type="button" class="btn btn-outline-dark">export</button>
                         </div>
                     </div>

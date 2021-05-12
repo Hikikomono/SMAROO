@@ -1,5 +1,6 @@
 //this var is needed so the LiveData query knows in which cardBoard we are in right now (temp, hum, light...)
 var actualcards = null;
+var failSafer = 0;
 
 // create date that is applicable with sql
 function getDate() {
@@ -158,13 +159,41 @@ function postSensorState(sensortype) {
 //getting the LiveData with a request from the Hardware Rest Interface directly; verwendet actualcards var to get the data
 function getLiveData(){
 
-    var request = "http://213.47.71.242/rq/" + actualcards + "/live";
+    var request = "http://213.47.71.242:50000/rq/" + actualcards + "/live";
 
-    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
-        var obj = JSON.parse(data);
+    $.get(request).done(function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+
+        var obj = data.data;
+
+        //"exception handling" if no connection (null) or a hardware failure (returns 666)
+        if (obj == 666 && failSafer <= 10){
+            failSafer++;
+            $("#liveMeasureValue").text("fail - trying again...");
+            getLiveData();
+
+
+        } else if (obj != null) {
+            var parsedNum = parseFloat(obj).toFixed(2);
+            $("#liveMeasureValue").text(parsedNum);
+            failSafer = 0;
+
+        }else {
+            $("#liveMeasureValue").text("failure - no connection");
+
+        }
+
+
+
+    });
+
+   /* $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
+        if(actualcards=="temperature" || actualcards=="air"){
+
+        }
+        var obj = data.data;
         //"exception handling" if no data is in the db
-        if (obj[0] != null) {
-            var parsedNum = parseFloat(obj['data']).toFixed(2);
+        if (obj != null) {
+            var parsedNum = parseFloat(obj).toFixed(2);
             $("#liveMeasureValue").text(parsedNum);
 
         } else {
@@ -172,7 +201,12 @@ function getLiveData(){
         }
 
 
-    });
+    });*/
+
+    //setting a timestamp so we know when the last measurement was
+    var dt = new Date();
+    var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+    $("#liveTimeStamp").text(time);
 
 
 }
@@ -219,12 +253,16 @@ $('#timespan').text(fromDate +" to " +toDate);
         dataPoints.push("d"+i);
     }
 
+    //sonst doppelte canvas weil sie immer wieder drüber neu erstellt werden
+    $('#myChart').remove();
+    $('#divOverChart').append('<canvas id="myChart"></canvas>')
+
 
 //TODO endDay muss +1 gerechnet werden, weil das sql between aus irgend einem grund nicht inclusive ist
-    //TODO das Chart muss clean werden wenn man switcht!
     var request = "getTimeSpan.php?From=" + fromDate + "&To=" + toDate +"&Sensortyp=" +actualcards;
    $.get(request, function (data) { //das hier ist eine anonyme funktion die ein call by reference macht - deshalb hier nochmals in einer function verschachtelt
        var obj = JSON.parse(data);
+
 
 
 //now the part for the actual chart creation, inside the request to get the obj
@@ -237,7 +275,7 @@ $('#timespan').text(fromDate +" to " +toDate);
         data: {
             labels: dataPoints,
             datasets: [{
-                label: 'My First dataset',
+                label: actualcards,
                 backgroundColor: 'rgb(112,179,232)',
                 borderColor: 'rgb(42,48,73)',
                 data: obj
@@ -248,6 +286,22 @@ $('#timespan').text(fromDate +" to " +toDate);
         options: {}
     });
 
-
    }); //ende request
+
+}
+
+//Functions for Profile
+function imgClick() {
+    $("#image_upload").click();
+}
+
+function preview_image(event)
+{
+    var reader = new FileReader();
+    reader.onload = function()
+    {
+        var output = document.getElementById('profile_image');
+        output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
 }
